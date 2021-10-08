@@ -1,6 +1,10 @@
 package math
 
+import kotlin.math.acos
+import kotlin.math.atan2
 import kotlin.math.cos
+import kotlin.math.max
+import kotlin.math.min
 import kotlin.math.sin
 import kotlin.math.sqrt
 import kotlin.random.Random
@@ -115,8 +119,12 @@ fun Vector2D.limit(max: Float): Vector2D {
     return this
 }
 
-// TODO - Add method to calculate the rotation of vector - `heading`. Add atan function in math.kt
-// TODO - Add method fromRadians - in trigonometry
+/**
+ * Calculate the angle of rotation for this vector(only 2D vectors).
+ */
+fun Vector2D.heading(): Float {
+    return atan2(this.y, this.x).fromRadians()
+}
 
 /**
  * Rotate the vector to a specific angle, magnitude remains the same
@@ -129,8 +137,20 @@ fun Vector2D.setHeading(angle: Float): Vector2D {
     return this
 }
 
-// TODO - add function to rotate the vector
-// TODO - Add function to measure angle between two vectors
+fun Vector2D.rotate(angle: Float): Vector2D {
+    val newHeading = (this.heading() + angle).toRadians()
+    val mag = this.mag()
+    this.x = cos(newHeading) * mag
+    this.y = sin(newHeading) * mag
+    return this
+}
+
+fun Vector2D.angleBetween(other: Vector2D): Float {
+    val dotmag = this.dot(other) / (this.mag() * other.mag())
+    val angle = acos(min(1f, max(-1f, dotmag)).toDouble()).toFloat()
+    // angle = angle * Math.signum(this.c)
+    return angle.toRadians()
+}
 
 /**
  * Linear interpolate the vector to another vector
