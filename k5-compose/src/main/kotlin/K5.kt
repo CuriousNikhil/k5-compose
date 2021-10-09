@@ -14,6 +14,29 @@ import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.window.v1.MenuBar
 import java.awt.image.BufferedImage
 
+/**
+ * Builder construct for the K5-compose.
+ * Can be called like - main() = k5 {...}
+ * All the params passed are applied to a [Window] component
+ *
+ * @param title The title of the window.
+ * The title is displayed in the windows's native border.
+ * @param size The initial size of the window.
+ * @param location The initial position of the window in screen space. This parameter is
+ * ignored if [center] is set to true.
+ * @param centered Determines if the window is centered on startup. The default value for the
+ * window is true.
+ * @param icon The icon for the window displayed on the system taskbar.
+ * @param menuBar Window menu bar. The menu bar can be displayed inside a window (Windows,
+ * Linux) or at the top of the screen (Mac OS).
+ * @param undecorated Removes the native window border if set to true. The default value is false.
+ * @param resizable Makes the window resizable if is set to true and unresizable if is set to
+ * false. The default value is true.
+ * @param events Allows to describe events of the window.
+ * Supported events: onOpen, onClose, onMinimize, onMaximize, onRestore, onFocusGet, onFocusLost,
+ * onResize, onRelocate.
+ * @param onDismissRequest Executes when the user tries to close the Window.
+ */
 fun k5(
     title: String = "Compose K5 Window",
     size: IntSize = IntSize(800, 600),
@@ -57,10 +80,21 @@ class K5(
 
     private var stopLoop = false
 
+    /**
+     * Call method to stop the looping of canvas
+     * You can also call it to freeze the time frame for a canvas
+     */
     fun noLoop() {
         this.stopLoop = true
     }
 
+    /**
+     * Shows the canvas window and renders it for each frame repetitively
+     *
+     * @param modifier Jetpack compose [Modifier]
+     * @param content dt - change in time
+     *                drawScope - Compose canvas drawscope
+     */
     fun show(modifier: Modifier, content: (dt: Float, drawScope: DrawScope) -> Unit) {
         render(modifier, content)
     }
@@ -92,7 +126,9 @@ class K5(
     }
 
     /**
-     * Run
+     * Run frame time with nanoseconds
+     * @param dt - Change it time
+     * @param previousTime - previous time to calculate change in time
      */
     @Composable
     private fun requestAnimationFrame(dt: MutableState<Float>, previousTime: MutableState<Long>) {
