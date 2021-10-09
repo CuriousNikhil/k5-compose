@@ -39,7 +39,7 @@ import java.awt.image.BufferedImage
  */
 fun k5(
     title: String = "Compose K5 Window",
-    size: IntSize = IntSize(800, 600),
+    size: IntSize = IntSize(400, 400),
     location: IntOffset = IntOffset.Zero,
     centered: Boolean = true,
     icon: BufferedImage? = null,
