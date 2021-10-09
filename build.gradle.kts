@@ -10,7 +10,7 @@ plugins {
 }
 
 group = "me.nikhilchaudhari"
-version = "1.0.0-alpha01"
+version = "1.0.0"
 
 repositories {
     mavenCentral()
@@ -30,7 +30,7 @@ compose.desktop {
         mainClass = "MainKt"
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
-            packageName = "k5-compose"
+            packageName = "k5-compose-examples"
             packageVersion = "1.0.0"
         }
     }
