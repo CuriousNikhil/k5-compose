@@ -3,8 +3,8 @@ import org.jetbrains.compose.compose
 plugins {
     kotlin("jvm")
     id("org.jetbrains.compose")
-    id("org.jlleitschuh.gradle.ktlint")
 }
+apply(plugin = "org.jlleitschuh.gradle.ktlint")
 
 group = "me.nikhilchaudhari"
 version = "1.0.0-alpha01"
