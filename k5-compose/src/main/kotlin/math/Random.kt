@@ -64,8 +64,8 @@ fun randomGaussian(mean: Float, standardDeviation: Float = 1f): Double {
         gaussianPrevious = false
     } else {
         do {
-            x1 = k5Random(2, 0) - 1
-            x2 = k5Random(2, 0) - 1
+            x1 = k5Random(0, 2) - 1
+            x2 = k5Random(0, 2) - 1
             w = (x1 * x1 + x2 * x2)
         } while (w >= 1)
         w = sqrt(-2 * ln(w) / w)
