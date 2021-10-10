@@ -1,3 +1,3 @@
-fun main() = k5 {
+fun main() {
     randomWalk()
 }
