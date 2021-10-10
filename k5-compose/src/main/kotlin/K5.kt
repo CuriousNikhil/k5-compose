@@ -1,6 +1,9 @@
+
 import androidx.compose.desktop.Window
 import androidx.compose.desktop.WindowEvents
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.MutableState
@@ -8,6 +11,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.withFrameNanos
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.IntSize
@@ -16,7 +20,7 @@ import java.awt.image.BufferedImage
 
 /**
  * Builder construct for the K5-compose.
- * Can be called like - main() = k5 {...}
+ * Can be called like, main() = k5 {...}
  * All the params passed are applied to a [Window] component
  *
  * @param title The title of the window.
@@ -95,7 +99,7 @@ class K5(
      * @param content dt - change in time
      *                drawScope - Compose canvas drawscope
      */
-    fun show(modifier: Modifier, content: (dt: Float, drawScope: DrawScope) -> Unit) {
+    fun show(modifier: Modifier = Modifier.fillMaxSize(), content: (dt: Float, drawScope: DrawScope) -> Unit) {
         render(modifier, content)
     }
 
@@ -116,9 +120,8 @@ class K5(
         var startTime = remember { mutableStateOf(0L) }
         val previousTime = remember { mutableStateOf(System.nanoTime()) }
 
-        Canvas(modifier = modifier) {
-            var stepFrame = dt.value
-            content(stepFrame, this)
+        Canvas(modifier = modifier.then(Modifier.fillMaxSize().background(Color.Black))) {
+            content(dt.value, this)
         }
         if (!stopLoop) {
             requestAnimationFrame(dt, previousTime)
