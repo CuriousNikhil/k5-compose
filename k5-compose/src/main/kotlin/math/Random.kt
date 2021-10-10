@@ -14,7 +14,7 @@ internal const val a = 1664525
 
 // c and m should be co-prime
 internal const val c = 1013904223
-var y2 = 0.0
+var y2 = 0f
 
 internal val stateValueMap = mutableMapOf<String, Long>()
 
@@ -38,7 +38,7 @@ fun randomSeed(seed: Int) {
     gaussianPrevious = false
 }
 
-fun k5Random(min: Int, max: Int): Double {
+fun k5Random(min: Int, max: Int): Float {
     var minimum = min
     var maximum = max
     val rand = if (stateValueMap.isNotEmpty()) {
@@ -50,14 +50,14 @@ fun k5Random(min: Int, max: Int): Double {
         minimum = max
         maximum = min
     }
-    return rand.toDouble() * (maximum - minimum) + min
+    return rand.toFloat() * (maximum - minimum) + min
 }
 
-fun randomGaussian(mean: Float, standardDeviation: Float = 1f): Double {
-    var y1 = 0.0
-    var x1 = 0.0
-    var x2 = 0.0
-    var w = 0.0
+fun randomGaussian(mean: Float, standardDeviation: Float = 1f): Float {
+    var y1 = 0f
+    var x1 = 0f
+    var x2 = 0f
+    var w = 0f
 
     if (gaussianPrevious) {
         y1 = y2

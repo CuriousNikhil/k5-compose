@@ -19,6 +19,7 @@ repositories {
 dependencies {
     implementation(compose.desktop.currentOs)
     implementation(project("k5-compose"))
+    // implementation("me.nikhilchaudhari:k5-compose:1.0.0-alpha01")
 }
 
 tasks.withType<KotlinCompile>() {

@@ -1,5 +1,6 @@
 package math
 
+import androidx.compose.ui.geometry.Offset
 import kotlin.math.acos
 import kotlin.math.atan2
 import kotlin.math.cos
@@ -30,10 +31,10 @@ data class Vector2D(var x: Float = 0f, var y: Float = 0f) {
         }
 
         /**
-         * Creates a random vector
+         * Creates a random vector (unit vector)
          */
         fun randomVector(): Vector2D {
-            return fromAnAngle((Random.nextFloat() * Math.PI * 2).toFloat())
+            return fromAnAngle((Random.nextFloat() * PI * 2).toFloat())
         }
     }
 }
@@ -56,9 +57,15 @@ fun Vector2D.sub(other: Vector2D): Vector2D {
     return this
 }
 
-fun Vector2D.mult(x: Float, y: Float): Vector2D {
+fun Vector2D.multiply(x: Float, y: Float): Vector2D {
     this.x *= x
     this.y *= y
+    return this
+}
+
+fun Vector2D.multiply(factor: Float): Vector2D {
+    this.x *= factor
+    this.y *= factor
     return this
 }
 
@@ -97,6 +104,16 @@ fun Vector2D.normalize(): Vector2D {
         this.scalarMultiply(1 / len)
     }
     return this
+}
+
+/**
+ * Set the magnitude of this vector to the value used for the <b>n</b>
+ * parameter.
+ *
+ * @param n the new length of the vector
+ */
+fun Vector2D.setMag(n: Float): Vector2D {
+    return this.normalize().multiply(n)
 }
 
 /**
@@ -145,6 +162,12 @@ fun Vector2D.rotate(angle: Float): Vector2D {
     return this
 }
 
+fun Vector2D.set(other: Vector2D): Vector2D {
+    this.x = other.x
+    this.y = other.y
+    return this
+}
+
 fun Vector2D.angleBetween(other: Vector2D): Float {
     val dotmag = this.dot(other) / (this.mag() * other.mag())
     val angle = acos(min(1f, max(-1f, dotmag)).toDouble()).toFloat()
@@ -186,4 +209,8 @@ fun Vector2D.inc(factor: Float): Vector2D {
     this.x += factor
     this.y += factor
     return this
+}
+
+fun Vector2D.toOffSet(): Offset {
+    return Offset(this.x, this.y)
 }
