@@ -1,7 +1,5 @@
 package examples.kinematics
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
@@ -77,13 +75,13 @@ fun simpleMover() = k5 {
     val mouse = Vector2D(0f, 0f)
 
     show(
-        Modifier.fillMaxSize().background(Color.Black).pointerMoveFilter(
+        Modifier.pointerMoveFilter(
             // get mouse pointer location/position
             onMove = {
                 mouse.x = it.x
                 mouse.y = it.y
                 false
-            },
+            }
         )
     ) { _, scope ->
         // update the mover

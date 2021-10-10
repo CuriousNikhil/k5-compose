@@ -66,7 +66,7 @@ fun levyFlightWalker() = k5 {
     // add position vector to points
     points.add(position.toOffSet())
 
-    show(Modifier.fillMaxSize().background(Color.Black)) { _, scope ->
+    show { _, scope ->
         // create a random vector
         val step = Vector2D.randomVector()
         // scalar multiply it by some random factor

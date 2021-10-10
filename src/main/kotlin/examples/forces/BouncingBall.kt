@@ -1,9 +1,7 @@
 package examples.forces
 
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.background
 import androidx.compose.foundation.combinedClickable
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
@@ -88,7 +86,7 @@ fun bouncingBall() = k5 {
     val ball = Ball(400f, 400f)
 
     show(
-        Modifier.fillMaxSize().background(Color.Black).combinedClickable(
+        Modifier.combinedClickable(
             onClick = {
                 /**
                  * On mouse click, apply wind force in right direction
