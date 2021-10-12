@@ -1,4 +1,3 @@
-
 import androidx.compose.desktop.Window
 import androidx.compose.desktop.WindowEvents
 import androidx.compose.foundation.Canvas
@@ -11,6 +10,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.withFrameNanos
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.unit.IntOffset
@@ -43,7 +43,7 @@ import java.awt.image.BufferedImage
  */
 fun k5(
     title: String = "Compose K5 Window",
-    size: IntSize = IntSize(400, 400),
+    size: IntSize = IntSize(500, 500),
     location: IntOffset = IntOffset.Zero,
     centered: Boolean = true,
     icon: BufferedImage? = null,
@@ -71,7 +71,7 @@ fun k5(
 
 class K5(
     val title: String,
-    val size: IntSize,
+    private val size: IntSize,
     val location: IntOffset,
     val centered: Boolean,
     val icon: BufferedImage?,
@@ -90,6 +90,19 @@ class K5(
      */
     fun noLoop() {
         this.stopLoop = true
+    }
+
+    /**
+     * Use this method to get the actual [k5] Playground size
+     *
+     * Subtracting the 56f - which is the toolbar height of the window.
+     * When the size of the window is set with `size` param in [k5] builder, it's applied to window and when
+     * the canvas is rendered in the window with [Modifier.fillMaxSize] it takes whole window except the toolbar.
+     *
+     * TODO: Fix the dimensions for a given k5 playground considering density and display metrics
+     */
+    fun getPlaygroundDimensions(): Size {
+        return Size(size.width.toFloat() * 2, (size.height.toFloat() * 2) - 56f)
     }
 
     /**
@@ -117,10 +130,11 @@ class K5(
     ) {
 
         val dt = remember { mutableStateOf(0f) }
+        // TODO : Show elapsed time and frames per second on toolbar of window
         var startTime = remember { mutableStateOf(0L) }
         val previousTime = remember { mutableStateOf(System.nanoTime()) }
 
-        Canvas(modifier = modifier.then(Modifier.fillMaxSize().background(Color.Black))) {
+        Canvas(modifier = Modifier.fillMaxSize().background(Color.Black).then(modifier)) {
             content(dt.value, this)
         }
         if (!stopLoop) {
