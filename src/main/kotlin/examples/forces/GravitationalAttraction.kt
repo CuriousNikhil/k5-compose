@@ -28,7 +28,7 @@ data class Moon(val x: Float, val y: Float, val m: Float) {
     val r = sqrt(mass) * 2
 
     init {
-        velocity.multiply(5f)
+        velocity.multiply(10f)
     }
 
     fun applyForce(force: Vector2D) {
@@ -58,7 +58,7 @@ data class Attractor(val x: Float, val y: Float, val m: Float) {
         val force = attractorPosition.sub(ball.position)
         val distanceSq = constrain(force.magSq(), 100f, 1000f)
 
-        val G = 8 // Universal Gravitational Constant
+        val G = 5 // Universal Gravitational Constant
 
         val gPull = G * (mass * ball.mass) / distanceSq
 
@@ -78,14 +78,14 @@ fun gravitationalPull() = k5 {
     repeat(15) {
         moons.add(
             Moon(
-                k5Random(50, (getPlaygroundDimensions().width).toInt()),
+                k5Random(50, getPlaygroundDimensions().width.toInt()),
                 k5Random(50, getPlaygroundDimensions().height.toInt()),
-                Random.nextInt(20, 40).toFloat()
+                Random.nextInt(30, 100).toFloat()
             )
         )
     }
 
-    val attractor = Attractor(400f, 400f, 200f)
+    val attractor = Attractor(getPlaygroundDimensions().width / 2, getPlaygroundDimensions().height / 2, 600f)
 
     show(
         modifier = Modifier.pointerMoveFilter(
