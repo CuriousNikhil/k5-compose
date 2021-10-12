@@ -5,14 +5,32 @@ import kotlin.math.floor
 
 internal const val DEFAULT_SIZE = 35f
 
+/**
+ * Generates single noise value for given [x] and [seed]
+ *
+ * @param x being a single component
+ * @param seed seed value if not passed, will be derived from [Random.nextGaussian]
+ */
 fun noise(x: Float, seed: Float = (Random().nextGaussian() * 255).toFloat()): Float {
     return NoiseGenerator(seed).noise(x)
 }
 
+/**
+ * Generates single noise value for given [x], [y] and [seed]
+ * @param x x component
+ * @param y y component
+ * @param seed seed value if not passed, will be derived from [Random.nextGaussian]
+ */
 fun noise(x: Float, y: Float, seed: Float = (Random().nextGaussian() * 255).toFloat()): Float {
     return NoiseGenerator(seed).noise(x, y)
 }
 
+/**
+ * Represents a simple noise generator with given seed value.
+ * This generates smooth noise which gives a normal distribution of random values around the provided factor
+ * Perlin noise https://en.wikipedia.org/wiki/Perlin_noise
+ * Simplex noise https://en.wikipedia.org/wiki/Simplex_noise
+ */
 internal class NoiseGenerator(
     private val seed: Float
 ) {

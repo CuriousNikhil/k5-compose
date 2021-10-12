@@ -1,5 +1,9 @@
 package math
 
+/**
+ * Constants
+ */
+
 internal const val _PI = Math.PI
 
 const val HALF_PI = _PI / 2

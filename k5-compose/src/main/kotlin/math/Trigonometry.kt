@@ -4,7 +4,7 @@ import kotlin.math.cos
 import kotlin.math.sin
 import kotlin.math.tan
 
-/*
+/**
  * Set global angle mode DEGREES/RADIANS [AngleMode]
  */
 var angleMode = AngleMode.RADIANS
@@ -37,6 +37,9 @@ fun Float.acos(ratio: Float): Float {
     return kotlin.math.acos(ratio).toRadians()
 }
 
+/**
+ * Converts float to radians
+ */
 fun Float.toRadians(): Float {
     if (angleMode == AngleMode.DEGREES) {
         return this * DEG_TO_RAD.toFloat()
@@ -44,6 +47,9 @@ fun Float.toRadians(): Float {
     return this
 }
 
+/**
+ * Converts float to degrees
+ */
 fun Float.toDegrees(): Float {
     if (angleMode == AngleMode.RADIANS) {
         return this * RAD_TO_DEG.toFloat()
@@ -51,6 +57,9 @@ fun Float.toDegrees(): Float {
     return this
 }
 
+/**
+ * Converts [this] degrees to radians
+ */
 fun Float.fromRadians(): Float {
     if (angleMode == AngleMode.RADIANS) {
         return this * RAD_TO_DEG.toFloat()

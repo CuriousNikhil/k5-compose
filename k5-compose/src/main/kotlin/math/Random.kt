@@ -38,7 +38,13 @@ fun randomSeed(seed: Int) {
     gaussianPrevious = false
 }
 
-fun k5Random(min: Int, max: Int): Float {
+/**
+ * A simple random function to return float values between range of
+ * [min] and [max]
+ *
+ * The default value for [min] is zero
+ */
+fun k5Random(min: Int = 0, max: Int): Float {
     var minimum = min
     var maximum = max
     val rand = if (stateValueMap.isNotEmpty()) {
@@ -53,6 +59,10 @@ fun k5Random(min: Int, max: Int): Float {
     return rand.toFloat() * (maximum - minimum) + min
 }
 
+/**
+ * Generates a random gaussian with [mean] value and [standardDeviation]
+ * default value for [standardDeviation] is 1
+ */
 fun randomGaussian(mean: Float, standardDeviation: Float = 1f): Float {
     var y1 = 0f
     var x1 = 0f
