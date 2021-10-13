@@ -7,8 +7,8 @@ import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.input.pointer.pointerMoveFilter
 import k5
 import math.Vector2D
-import math.add
 import math.limit
+import math.plusAssign
 import math.scalarMultiply
 import math.setMag
 import math.sub
@@ -53,11 +53,11 @@ data class Mover(
          */
 
         // Add acceleration to velocity
-        velocity.add(acceleration)
+        velocity += acceleration
         // set limit to velocity some constant value, so it won't bounce off
         velocity.limit(5f)
         // finally, add velocity to position
-        position.add(velocity)
+        position += velocity
     }
 
     // this draws a circle

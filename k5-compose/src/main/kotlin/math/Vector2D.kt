@@ -72,11 +72,14 @@ fun Vector2D.add(other: Vector2D): Vector2D {
     return this
 }
 
-/**
- * To add a vector to [this] vector
- */
+operator fun Vector2D.plusAssign(other: Vector2D) {
+    this.add(other)
+}
 
-fun Vector2D.add(other: Vector2D, scalar: Float): Vector2D {
+/**
+ * To add a vector to [this] vector and multiplies the [other] vector with [scalar]
+ */
+fun Vector2D.addWithScalarMultiply(other: Vector2D, scalar: Float): Vector2D {
     this.x += other.x * scalar
     this.y += other.y * scalar
     return this
@@ -89,6 +92,10 @@ fun Vector2D.sub(other: Vector2D): Vector2D {
     this.x -= other.x
     this.y -= other.y
     return this
+}
+
+operator fun Vector2D.minusAssign(other: Vector2D) {
+    this.sub(other)
 }
 
 /**
@@ -108,6 +115,10 @@ fun Vector2D.multiply(factor: Float): Vector2D {
     return multiply(factor, factor)
 }
 
+operator fun Vector2D.timesAssign(factor: Float) {
+    this.multiply(factor)
+}
+
 /**
  * To divide [this] vector by [x] and [y] values
  */
@@ -122,6 +133,10 @@ fun Vector2D.div(x: Float, y: Float): Vector2D {
  */
 fun Vector2D.divide(factor: Float): Vector2D {
     return div(factor, factor)
+}
+
+operator fun Vector2D.divAssign(factor: Float) {
+    this.divide(factor)
 }
 
 /**
@@ -270,9 +285,15 @@ fun Vector2D.scalarMultiply(scalar: Float): Vector2D {
 /**
  * Increments [this] vector by [factor]
  */
-fun Vector2D.inc(factor: Float): Vector2D {
+operator fun Vector2D.inc(factor: Float): Vector2D {
     this.x += factor
     this.y += factor
+    return this
+}
+
+operator fun Vector2D.dec(factor: Float): Vector2D {
+    this.x -= factor
+    this.y -= factor
     return this
 }
 

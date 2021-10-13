@@ -7,15 +7,15 @@ import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.input.pointer.pointerMoveFilter
 import k5
 import math.Vector2D
-import math.add
 import math.constrain
 import math.divide
 import math.k5Random
 import math.magSq
-import math.multiply
+import math.plusAssign
 import math.set
 import math.setMag
 import math.sub
+import math.timesAssign
 import math.toOffSet
 import kotlin.math.sqrt
 import kotlin.random.Random
@@ -28,18 +28,18 @@ data class Moon(val x: Float, val y: Float, val m: Float) {
     val r = sqrt(mass) * 2
 
     init {
-        velocity.multiply(10f)
+        velocity *= 10f
     }
 
     fun applyForce(force: Vector2D) {
         val f = force.divide(mass)
-        acceleration.add(f)
+        acceleration += f
     }
 
     fun update() {
-        velocity.add(acceleration)
-        position.add(velocity)
-        acceleration.multiply(0f)
+        velocity += acceleration
+        position += velocity
+        acceleration *= 0f
     }
 
     fun render(drawScope: DrawScope) {

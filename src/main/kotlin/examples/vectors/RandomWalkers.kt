@@ -1,4 +1,3 @@
-
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.ui.Modifier
@@ -7,8 +6,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.PointMode
 import androidx.compose.ui.graphics.StrokeCap
 import math.Vector2D
-import math.add
 import math.multiply
+import math.plusAssign
 import math.setMag
 import math.toOffSet
 import kotlin.random.Random
@@ -87,7 +86,7 @@ fun levyFlightWalker() = k5 {
         you can just use any random scalar to multiply with step vector above^*/
 
         // add the step vector to position vector
-        position.add(step)
+        position += step
         // add new position to points
         points.add(position.toOffSet())
 
