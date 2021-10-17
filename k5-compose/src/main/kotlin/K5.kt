@@ -1,5 +1,3 @@
-import androidx.compose.desktop.Window
-import androidx.compose.desktop.WindowEvents
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
@@ -13,73 +11,77 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.DrawScope
-import androidx.compose.ui.unit.IntOffset
-import androidx.compose.ui.unit.IntSize
-import androidx.compose.ui.window.v1.MenuBar
-import java.awt.image.BufferedImage
+import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.input.key.KeyEvent
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.window.Window
+import androidx.compose.ui.window.application
+import androidx.compose.ui.window.rememberWindowState
 
 /**
  * Builder construct for the K5-compose.
  * Can be called like, main() = k5 {...}
  * All the params passed are applied to a [Window] component
  *
+ * @param size The size param for the size of window - [Size]
+ * The size is taken in floats in order to perform canvas related operations easily on floats which includes the
+ * dimension of window
  * @param title The title of the window.
  * The title is displayed in the windows's native border.
  * @param size The initial size of the window.
- * @param location The initial position of the window in screen space. This parameter is
- * ignored if [center] is set to true.
- * @param centered Determines if the window is centered on startup. The default value for the
- * window is true.
  * @param icon The icon for the window displayed on the system taskbar.
- * @param menuBar Window menu bar. The menu bar can be displayed inside a window (Windows,
- * Linux) or at the top of the screen (Mac OS).
  * @param undecorated Removes the native window border if set to true. The default value is false.
  * @param resizable Makes the window resizable if is set to true and unresizable if is set to
  * false. The default value is true.
- * @param events Allows to describe events of the window.
- * Supported events: onOpen, onClose, onMinimize, onMaximize, onRestore, onFocusGet, onFocusLost,
- * onResize, onRelocate.
- * @param onDismissRequest Executes when the user tries to close the Window.
+ * @param focusable Can window receive focus
+ * @param alwaysOnTop Should window always be on top of another windows
+ * @param onPreviewKeyEvent This callback is invoked when the user interacts with the hardware
+ * keyboard. It gives ancestors of a focused component the chance to intercept a [KeyEvent].
+ * Return true to stop propagation of this event. If you return false, the key event will be
+ * sent to this [onPreviewKeyEvent]'s child. If none of the children consume the event,
+ * it will be sent back up to the root using the onKeyEvent callback.
+ * @param onKeyEvent This callback is invoked when the user interacts with the hardware
+ * keyboard. While implementing this callback, return true to stop propagation of this event.
+ * If you return false, the key event will be sent to this [onKeyEvent]'s parent.
  */
 fun k5(
-    title: String = "Compose K5 Window",
-    size: IntSize = IntSize(500, 500),
-    location: IntOffset = IntOffset.Zero,
-    centered: Boolean = true,
-    icon: BufferedImage? = null,
-    menuBar: MenuBar? = null,
+    size: Size = Size(1000f, 1000f),
+    title: String = "K5 Compose Playground",
+    icon: Painter? = null,
     undecorated: Boolean = false,
-    resizable: Boolean = true,
-    events: WindowEvents = WindowEvents(),
-    onDismissRequest: (() -> Unit)? = null,
+    resizable: Boolean = false,
+    enabled: Boolean = true,
+    focusable: Boolean = true,
+    alwaysOnTop: Boolean = false,
+    onPreviewKeyEvent: (KeyEvent) -> Boolean = { false },
+    onKeyEvent: (KeyEvent) -> Boolean = { false },
     init: K5.() -> Unit
 ) {
-    val composeK5 = K5(
-        title = title,
-        size = size,
-        location = location,
-        centered = centered,
-        icon = icon,
-        menuBar = menuBar,
-        undecorated = undecorated,
-        resizable = resizable,
-        events = events,
-        onDismissRequest = onDismissRequest
-    )
-    composeK5.init()
+    K5(
+        size,
+        title,
+        icon,
+        undecorated,
+        resizable,
+        enabled,
+        focusable,
+        alwaysOnTop,
+        onPreviewKeyEvent,
+        onKeyEvent
+    ).init()
 }
 
 class K5(
+    val size: Size,
     val title: String,
-    private val size: IntSize,
-    val location: IntOffset,
-    val centered: Boolean,
-    val icon: BufferedImage?,
-    val menuBar: MenuBar?,
+    val icon: Painter?,
     val undecorated: Boolean,
     val resizable: Boolean,
-    val events: WindowEvents,
-    val onDismissRequest: (() -> Unit)?
+    val enabled: Boolean,
+    val focusable: Boolean,
+    val alwaysOnTop: Boolean,
+    val onPreviewKeyEvent: (KeyEvent) -> Boolean,
+    val onKeyEvent: (KeyEvent) -> Boolean,
 ) {
 
     private var stopLoop = false
@@ -99,10 +101,10 @@ class K5(
      * When the size of the window is set with `size` param in [k5] builder, it's applied to window and when
      * the canvas is rendered in the window with [Modifier.fillMaxSize] it takes whole window except the toolbar.
      *
-     * TODO: Fix the dimensions for a given k5 playground considering density and display metrics
+     * TODO: Fix the dimensions for a given k5 playground considering density
      */
     fun getPlaygroundDimensions(): Size {
-        return Size(size.width.toFloat() * 2, (size.height.toFloat() * 2) - 56f)
+        return Size(size.width, size.height - 56f)
     }
 
     /**
@@ -116,29 +118,33 @@ class K5(
         render(modifier, content)
     }
 
-    private fun render(modifier: Modifier, content: (dt: Float, drawScope: DrawScope) -> Unit) = Window(
-        title = title,
-        size = size,
-        location = location,
-        centered = centered,
-        icon = icon,
-        menuBar = menuBar,
-        undecorated = undecorated,
-        resizable = resizable,
-        events = events,
-        onDismissRequest = onDismissRequest
-    ) {
+    private fun render(modifier: Modifier, content: (dt: Float, drawScope: DrawScope) -> Unit) = application {
+        val (width, height) = with(LocalDensity.current) { Pair(size.width.toDp(), size.height.toDp()) }
+        println("$width, $height")
+        Window(
+            onCloseRequest = ::exitApplication,
+            state = rememberWindowState(width = width, height = height),
+            title = title,
+            icon = icon,
+            undecorated = undecorated,
+            resizable = resizable,
+            enabled = enabled,
+            focusable = focusable,
+            alwaysOnTop = alwaysOnTop,
+            onPreviewKeyEvent = onPreviewKeyEvent,
+            onKeyEvent = onKeyEvent
+        ) {
 
-        val dt = remember { mutableStateOf(0f) }
-        // TODO : Show elapsed time and frames per second on toolbar of window
-        var startTime = remember { mutableStateOf(0L) }
-        val previousTime = remember { mutableStateOf(System.nanoTime()) }
-
-        Canvas(modifier = Modifier.fillMaxSize().background(Color.Black).then(modifier)) {
-            content(dt.value, this)
-        }
-        if (!stopLoop) {
-            requestAnimationFrame(dt, previousTime)
+            val dt = remember { mutableStateOf(0f) }
+            // TODO : Show elapsed time and frames per second on toolbar of window
+            var startTime = remember { mutableStateOf(0L) }
+            val previousTime = remember { mutableStateOf(System.nanoTime()) }
+            Canvas(modifier = Modifier.fillMaxSize().background(Color.Black).then(modifier)) {
+                content(dt.value, this)
+            }
+            if (!stopLoop) {
+                requestAnimationFrame(dt, previousTime)
+            }
         }
     }
 

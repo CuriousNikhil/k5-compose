@@ -3,8 +3,8 @@ import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.5.10"
-    id("org.jetbrains.compose") version "0.4.0"
+    kotlin("jvm") version "1.5.21"
+    id("org.jetbrains.compose") version "1.0.0-alpha3"
     id("org.jlleitschuh.gradle.ktlint") version "10.2.0"
 }
 
@@ -13,6 +13,7 @@ version = "1.0.0"
 
 repositories {
     mavenCentral()
+    google()
     maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
 }
 
