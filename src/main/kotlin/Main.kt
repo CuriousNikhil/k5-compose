@@ -1,15 +1,16 @@
-
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.ui.ExperimentalComposeUiApi
-import examples.forces.gravitationalPull
+import examples.simulations.gameOfLife
 
 @ExperimentalComposeUiApi
-@ExperimentalFoundationApi
 fun main() {
     // simpleRandomWalk()
     // levyFlightWalker()
     // simpleMover()
     // bouncingBall()
 
-    gravitationalPull()
+    // gravitationalPull()
+
+    // rotateRectangle()
+
+    gameOfLife()
 }
