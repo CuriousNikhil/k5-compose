@@ -157,7 +157,7 @@ fun Vector2D.dot(other: Vector2D): Float = this.x * other.x + this.y * other.y
 /**
  * Calculates Euclidean distance between two vectors
  */
-fun Vector2D.distance(other: Vector2D): Float = this.sub(other).mag()
+fun Vector2D.distance(other: Vector2D): Float = this.copy().sub(other).mag()
 
 /**
  * Normalizes the vector to length 1 - making unit vector
