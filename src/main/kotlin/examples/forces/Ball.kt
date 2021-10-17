@@ -37,8 +37,7 @@ data class Ball(
 
     // Create the radius of the object based on the mass. The more the mass, the more the size of the ball
     val radius = sqrt(mass) * 10
-    val ballOvalWidth = radius * 2
-    val ballOvalHeight = radius * 2
+    val diameter = radius * 2
 
     /**
      * Applies the force over an object
@@ -69,7 +68,7 @@ data class Ball(
      * mu - a greek letter mu stands for friction coefficient and N is the constant based on the mass of the body
      */
     fun friction() {
-        val diff = height - (position.y + ballOvalHeight)
+        val diff = height - (position.y + radius)
         if (diff < 1) {
 
             // Direction of the friction is opposite
@@ -79,7 +78,7 @@ data class Ball(
 
             // Magnitude of friction
             val normal = mass
-            val mu = 2f
+            val mu = 0.2f
             friction.setMag(mu * normal)
 
             // Apply the friction force
@@ -118,15 +117,15 @@ data class Ball(
      * Calculating the edges so that ball doesn't bounce off the window
      */
     fun edges() {
-        if (position.y >= height - ballOvalHeight) {
-            position.y = height - ballOvalHeight
+        if (position.y >= height - radius) {
+            position.y = height - radius
             velocity.y *= -1
         }
-        if (position.x >= width - ballOvalWidth) {
-            position.x = width - ballOvalWidth
+        if (position.x >= width - radius) {
+            position.x = width - radius
             velocity.x *= -1
-        } else if (position.x <= 0) {
-            position.x = 1f
+        } else if (position.x <= radius) {
+            position.x = radius
             velocity.x *= -1
         }
     }
@@ -145,6 +144,7 @@ data class Ball(
 
     // this draws a circle
     fun render(drawScope: DrawScope) {
-        drawScope.drawOval(Color.White, position.toOffSet(), Size(ballOvalWidth, ballOvalHeight), alpha = 0.6f)
+        drawScope.drawCircle(Color.White, radius, position.toOffSet())
+        // drawScope.drawOval(Color.White, position.toOffSet(), Size(ballOvalWidth, ballOvalHeight), alpha = 0.6f)
     }
 }

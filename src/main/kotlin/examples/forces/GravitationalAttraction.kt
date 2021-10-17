@@ -1,7 +1,6 @@
 package examples.forces
 
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.input.pointer.pointerMoveFilter
@@ -43,7 +42,7 @@ data class Moon(val x: Float, val y: Float, val m: Float) {
     }
 
     fun render(drawScope: DrawScope) {
-        drawScope.drawOval(Color.White, position.toOffSet(), Size(r * 2, r * 2))
+        drawScope.drawCircle(Color.White, r, position.toOffSet())
     }
 }
 
@@ -68,7 +67,7 @@ data class Attractor(val x: Float, val y: Float, val m: Float) {
     }
 
     fun render(drawScope: DrawScope) {
-        drawScope.drawOval(Color.Magenta, position.toOffSet(), Size(radius * 2, radius * 2))
+        drawScope.drawCircle(Color.Magenta, radius, position.toOffSet())
     }
 }
 

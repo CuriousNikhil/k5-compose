@@ -12,7 +12,7 @@ import math.Vector2D
 import math.multiply
 import kotlin.random.Random
 
-@ExperimentalFoundationApi
+@OptIn(ExperimentalFoundationApi::class)
 fun bouncingBall() = k5 {
     val playgroundSize = getPlaygroundDimensions()
 
@@ -48,7 +48,7 @@ fun bouncingBall() = k5 {
                 /**
                  * On mouse click, apply wind force in right direction
                  */
-                val wind = Vector2D(10f, 0f)
+                val wind = Vector2D(50f, 0f)
                 balls.forEach { it.applyForce(wind) }
             }
         )
