@@ -42,7 +42,7 @@ java {
 fun getExtraString(name: String) = ext[name]?.toString()
 
 group = "me.nikhilchaudhari"
-version = "1.0.0-alpha01"
+version = "1.0.0-alpha2"
 val pubName = "k5-compose"
 
 publishing {
