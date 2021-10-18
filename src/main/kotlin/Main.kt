@@ -1,5 +1,5 @@
 import androidx.compose.ui.ExperimentalComposeUiApi
-import examples.simulations.gameOfLife
+import examples.mathematics.parametricEquation
 
 @ExperimentalComposeUiApi
 fun main() {
@@ -12,5 +12,10 @@ fun main() {
 
     // rotateRectangle()
 
-    gameOfLife()
+    // gameOfLife()
+    // chainLoop()
+    // particleJs()
+    parametricEquation()
+
+    // TODO - perlin noise example-https://editor.p5js.org/codingtrain/sketches/vDcIAbfg7
 }
