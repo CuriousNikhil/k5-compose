@@ -14,6 +14,7 @@ import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.input.key.KeyEvent
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
 import androidx.compose.ui.window.rememberWindowState
@@ -106,6 +107,9 @@ class K5(
     fun getPlaygroundDimensions(): Size {
         return Size(size.width, size.height - 56f)
     }
+
+    val dimensFloat = Size(size.width, size.height - 56f)
+    val dimensInt = IntSize(size.width.toInt(), size.height.toInt() - 56)
 
     /**
      * Shows the canvas window and renders it for each frame repetitively
