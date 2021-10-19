@@ -1,4 +1,5 @@
 import androidx.compose.ui.ExperimentalComposeUiApi
+import examples.shm.simulateSineWave
 
 @ExperimentalComposeUiApi
 fun main() {
@@ -15,6 +16,6 @@ fun main() {
     // chainLoop()
     // particleJs()
     // parametricEquation()
-
     // simplexNoise()
+    simulateSineWave()
 }
