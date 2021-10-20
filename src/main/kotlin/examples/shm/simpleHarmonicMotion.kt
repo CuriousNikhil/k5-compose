@@ -18,7 +18,7 @@ fun simulateSineWave() = k5 {
         angles.add(map(it.toFloat(), 0f, total.toFloat(), 0f, 2 * TWO_PI.toFloat()))
     }
 
-    show { dt, drawScope ->
+    show { drawScope ->
         drawScope.translate(500f, 500f) {
             for (i in 0 until angles.size) {
                 val y = map(sin(angles[i]), -1f, 1f, -400f, 400f)

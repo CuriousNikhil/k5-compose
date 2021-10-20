@@ -21,8 +21,8 @@ fun parametricEquation() = k5 {
 
     fun y2(t: Float) = cos(t / 15f) * 125f + cos(t / 25f) * 125f + cos(t / 35f) * 125f
 
-    show(Modifier.background(Color.White)) { _, scope ->
-        scope.translate(getPlaygroundDimensions().width / 2, getPlaygroundDimensions().height / 2) {
+    show(Modifier.background(Color.White)) { scope ->
+        scope.translate(dimensFloat.width / 2, dimensFloat.height / 2) {
             for (i in 0..100) {
                 this.drawLine(
                     Color.Black,

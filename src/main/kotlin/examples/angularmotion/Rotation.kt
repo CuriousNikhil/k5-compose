@@ -19,7 +19,7 @@ fun rotateRectangle() = k5 {
     var angularVelocity = 0f
     var angularAcc = 0.001f
 
-    val position = Vector2D(getPlaygroundDimensions().width / 2, getPlaygroundDimensions().height / 2).toOffSet()
+    val position = Vector2D(dimensFloat.width / 2, dimensFloat.height / 2).toOffSet()
 
     var mouseX = 0f
     show(
@@ -27,11 +27,11 @@ fun rotateRectangle() = k5 {
             mouseX = it.x
             false
         })
-    ) { dt, drawScope ->
+    ) { drawScope ->
 
         // Map the angular acceleration between -0.01f to 0.01f.
         // Map function basically re-maps a number from one range to another.
-        angularAcc = map(mouseX, 0f, getPlaygroundDimensions().width, -0.01f, 0.01f)
+        angularAcc = map(mouseX, 0f, dimensFloat.width, -0.01f, 0.01f)
 
         // add constrain on the angular velocity value between given low and high
         angularVelocity = constrain(angularVelocity, -0.2f, 0.2f)

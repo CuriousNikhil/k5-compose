@@ -53,10 +53,10 @@ fun particleJs() = k5 {
     val particles = mutableListOf<Particle>()
 
     repeat(50) {
-        particles.add(Particle(getPlaygroundDimensions()))
+        particles.add(Particle(dimensFloat))
     }
 
-    show { dt, drawScope ->
+    show { drawScope ->
         for (i in 0 until 50) {
             val it = particles[i]
             it.createParticle(drawScope)

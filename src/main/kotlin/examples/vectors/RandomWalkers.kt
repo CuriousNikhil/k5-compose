@@ -29,7 +29,7 @@ fun simpleRandomWalk() = k5 {
     val points = mutableListOf<Offset>()
     points.add(Offset(x, y))
 
-    show(modifier = Modifier.fillMaxSize().background(Color.Black)) { _, drawScope ->
+    show(modifier = Modifier.fillMaxSize().background(Color.Black)) { drawScope ->
         val r = Random.nextInt(0, 5)
         when (r) {
             0 -> {
@@ -66,7 +66,7 @@ fun levyFlightWalker() = k5 {
     // add position vector to points
     points.add(position.toOffSet())
 
-    show { _, scope ->
+    show { scope ->
         // create a random vector
         val step = Vector2D.randomVector()
         // scalar multiply it by some random factor

@@ -77,14 +77,14 @@ fun gravitationalPull() = k5 {
     repeat(15) {
         moons.add(
             Moon(
-                k5Random(50, getPlaygroundDimensions().width.toInt()),
-                k5Random(50, getPlaygroundDimensions().height.toInt()),
+                k5Random(50, dimensFloat.width.toInt()),
+                k5Random(50, dimensFloat.height.toInt()),
                 Random.nextInt(30, 100).toFloat()
             )
         )
     }
 
-    val attractor = Attractor(getPlaygroundDimensions().width / 2, getPlaygroundDimensions().height / 2, 600f)
+    val attractor = Attractor(dimensFloat.width / 2, dimensFloat.height / 2, 600f)
 
     show(
         modifier = Modifier.pointerMoveFilter(
@@ -93,7 +93,7 @@ fun gravitationalPull() = k5 {
                 false
             }
         )
-    ) { dt, drawScope ->
+    ) { drawScope ->
         attractor.render(drawScope)
         for (moon in moons) {
             moon.update()

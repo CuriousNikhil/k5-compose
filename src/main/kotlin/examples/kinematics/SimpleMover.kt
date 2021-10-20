@@ -83,7 +83,7 @@ fun simpleMover() = k5 {
                 false
             }
         )
-    ) { _, scope ->
+    ) { scope ->
         // update the mover
         mover.update(mouse)
         // render the mover

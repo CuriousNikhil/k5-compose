@@ -90,10 +90,10 @@ class GameOfLife(dimensions: Size) {
 
 fun gameOfLife() = k5 {
 
-    val gameOfLife = GameOfLife(getPlaygroundDimensions())
+    val gameOfLife = GameOfLife(dimensFloat)
     val w = 50f
 
-    show { dt, drawScope ->
+    show { drawScope ->
         gameOfLife.generate()
         for (i in 0 until gameOfLife.columns) {
             for (j in 0 until gameOfLife.rows) {

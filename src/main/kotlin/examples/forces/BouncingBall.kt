@@ -14,7 +14,7 @@ import kotlin.random.Random
 
 @OptIn(ExperimentalFoundationApi::class)
 fun bouncingBall() = k5 {
-    val playgroundSize = getPlaygroundDimensions()
+    val playgroundSize = dimensFloat
 
     val balls = mutableListOf<Ball>()
     repeat(5) {
@@ -52,7 +52,7 @@ fun bouncingBall() = k5 {
                 balls.forEach { it.applyForce(wind) }
             }
         )
-    ) { _, scope ->
+    ) { scope ->
 
         // Apply gravity force every time on ball
         val gravity = Vector2D(0f, 0.2f)

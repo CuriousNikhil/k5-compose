@@ -80,7 +80,7 @@ fun simplexNoise() = k5 {
     val particle = Particle(dimensInt)
     var yoff = 0f
     var xoff = 0f
-    show { dt, drawScope ->
+    show { drawScope ->
         val angle = noise(x = xoff, y = yoff) * TWO_PI + 4
         val v = Vector2D.fromAnAngle(angle.toFloat())
         v.setMag(1f)
