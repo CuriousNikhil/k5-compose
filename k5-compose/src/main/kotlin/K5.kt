@@ -96,7 +96,7 @@ class K5(
     }
 
     /**
-     * Use this method to get the actual [k5] Playground size
+     * Use this properties to get the actual [k5] Playground size
      *
      * Subtracting the 56f - which is the toolbar height of the window.
      * When the size of the window is set with `size` param in [k5] builder, it's applied to window and when
@@ -104,10 +104,6 @@ class K5(
      *
      * TODO: Fix the dimensions for a given k5 playground considering density
      */
-    fun getPlaygroundDimensions(): Size {
-        return Size(size.width, size.height - 56f)
-    }
-
     val dimensFloat = Size(size.width, size.height - 56f)
     val dimensInt = IntSize(size.width.toInt(), size.height.toInt() - 56)
 
@@ -115,14 +111,23 @@ class K5(
      * Shows the canvas window and renders it for each frame repetitively
      *
      * @param modifier Jetpack compose [Modifier]
-     * @param content dt - change in time
-     *                drawScope - Compose canvas drawscope
+     * @param sketch drawScope - Compose canvas drawscope
      */
-    fun show(modifier: Modifier = Modifier.fillMaxSize(), content: (dt: Float, drawScope: DrawScope) -> Unit) {
-        render(modifier, content)
+    fun show(modifier: Modifier = Modifier.fillMaxSize(), sketch: (drawScope: DrawScope) -> Unit) {
+        render(modifier, sketch)
     }
 
-    private fun render(modifier: Modifier, content: (dt: Float, drawScope: DrawScope) -> Unit) = application {
+    /**
+     * Starts the Jetpack Compose Window and renders the [sketch] requested by user into the Jetpack Compose
+     * [Canvas] Composable. The size of the [Canvas] will be same as the [size] passed in [k5] method by default.
+     * One can change the canvas size and window size with the help of modifiers.
+     * In order to keep the animation running (rendering canvas continuously), it requests to run the frame of animation in nanos.
+     * All the [modifier] will be applied to the [Canvas].
+     *
+     * @param modifier - Jetpack compose [Modifier]. Will be applied to the [Canvas]
+     * @param sketch - The content to be drawn on to [Canvas]
+     */
+    private fun render(modifier: Modifier, sketch: (drawScope: DrawScope) -> Unit) = application {
         val (width, height) = with(LocalDensity.current) { Pair(size.width.toDp(), size.height.toDp()) }
         println("$width, $height")
         Window(
@@ -139,12 +144,14 @@ class K5(
             onKeyEvent = onKeyEvent
         ) {
 
+            // dt = change in time
             val dt = remember { mutableStateOf(0f) }
             // TODO : Show elapsed time and frames per second on toolbar of window
             var startTime = remember { mutableStateOf(0L) }
             val previousTime = remember { mutableStateOf(System.nanoTime()) }
             Canvas(modifier = Modifier.fillMaxSize().background(Color.Black).then(modifier)) {
-                content(dt.value, this)
+                val stepFrame = dt.value
+                sketch(this)
             }
             if (!stopLoop) {
                 requestAnimationFrame(dt, previousTime)

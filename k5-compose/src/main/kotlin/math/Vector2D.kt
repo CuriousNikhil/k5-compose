@@ -291,6 +291,9 @@ operator fun Vector2D.inc(factor: Float): Vector2D {
     return this
 }
 
+/**
+ * Decrements [this] vector by [factor]
+ */
 operator fun Vector2D.dec(factor: Float): Vector2D {
     this.x -= factor
     this.y -= factor
