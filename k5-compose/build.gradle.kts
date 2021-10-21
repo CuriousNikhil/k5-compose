@@ -35,8 +35,15 @@ if (secretPropsFile.exists()) {
     ext["ossrhPassword"] = System.getenv("OSSRH_PASSWORD")
 }
 
+val dokkaHtml by tasks.getting(org.jetbrains.dokka.gradle.DokkaTask::class)
+val javaDocJar: TaskProvider<Jar> by tasks.registering(Jar::class) {
+    dependsOn()
+    archiveClassifier.set("javadoc")
+    from(dokkaHtml.outputDirectory)
+}
+
 java {
-    withJavadocJar()
+    javaDocJar
     withSourcesJar()
 }
 

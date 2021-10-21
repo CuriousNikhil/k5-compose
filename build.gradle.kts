@@ -39,7 +39,3 @@ compose.desktop {
         }
     }
 }
-
-tasks.getByName("dokkaHtml").doLast {
-    exec { commandLine("mv build/dokka api-docs".split(" ")) }
-}
