@@ -43,7 +43,6 @@ val javaDocJar: TaskProvider<Jar> by tasks.registering(Jar::class) {
 }
 
 java {
-    javaDocJar
     withSourcesJar()
 }
 
@@ -69,6 +68,7 @@ publishing {
     // Configure all publications
     publications.create<MavenPublication>(pubName) {
         artifactId = pubName
+        artifact(javaDocJar)
         from(components["java"])
 
         pom {
