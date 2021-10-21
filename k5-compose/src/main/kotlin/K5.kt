@@ -96,19 +96,26 @@ class K5(
     }
 
     /**
-     * Use this properties to get the actual [k5] Playground size
-     *
-     * Subtracting the 56f - which is the toolbar height of the window.
+     * Use this property to get the actual [k5] Playground size in Floats. Subtracting the 56f - which is the toolbar height of the window.
      * When the size of the window is set with `size` param in [k5] builder, it's applied to window and when
      * the canvas is rendered in the window with [Modifier.fillMaxSize] it takes whole window except the toolbar.
      *
      * TODO: Fix the dimensions for a given k5 playground considering density
      */
     val dimensFloat = Size(size.width, size.height - 56f)
+
+    /**
+     * Use this property to get the actual [k5] Playground size in Ints
+     */
     val dimensInt = IntSize(size.width.toInt(), size.height.toInt() - 56)
 
     /**
-     * Shows the canvas window and renders it for each frame repetitively
+     * Shows the canvas window and renders it for each frame repetitively.
+     * Internally, this starts the Jetpack Compose Window and renders the [sketch] requested by user into the Jetpack Compose
+     * [Canvas] Composable. The size of the [Canvas] will be same as the [size] passed in [k5] method by default.
+     * One can change the canvas size and window size with the help of modifiers.
+     * In order to keep the animation running (rendering canvas continuously), it requests to run the frame of animation in nanos.
+     * All the [modifier] will be applied to the [Canvas].
      *
      * @param modifier Jetpack compose [Modifier]
      * @param sketch drawScope - Compose canvas drawscope
@@ -119,10 +126,7 @@ class K5(
 
     /**
      * Starts the Jetpack Compose Window and renders the [sketch] requested by user into the Jetpack Compose
-     * [Canvas] Composable. The size of the [Canvas] will be same as the [size] passed in [k5] method by default.
-     * One can change the canvas size and window size with the help of modifiers.
-     * In order to keep the animation running (rendering canvas continuously), it requests to run the frame of animation in nanos.
-     * All the [modifier] will be applied to the [Canvas].
+     * [Canvas] Composable.
      *
      * @param modifier - Jetpack compose [Modifier]. Will be applied to the [Canvas]
      * @param sketch - The content to be drawn on to [Canvas]

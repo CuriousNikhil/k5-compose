@@ -6,6 +6,7 @@ plugins {
     `java-library`
     `maven-publish`
     signing
+    id("org.jetbrains.dokka")
 }
 apply(plugin = "org.jlleitschuh.gradle.ktlint")
 
@@ -102,6 +103,7 @@ repositories {
 
 dependencies {
     implementation(compose.desktop.currentOs)
+    dokkaHtmlPlugin("org.jetbrains.dokka:kotlin-as-java-plugin:1.5.30")
 }
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>() {

@@ -6,6 +6,7 @@ plugins {
     kotlin("jvm") version "1.5.21"
     id("org.jetbrains.compose") version "1.0.0-alpha3"
     id("org.jlleitschuh.gradle.ktlint") version "10.2.0"
+    id("org.jetbrains.dokka") version "1.5.30"
 }
 
 group = "me.nikhilchaudhari"
@@ -21,6 +22,7 @@ dependencies {
     implementation(compose.desktop.currentOs)
     implementation(project("k5-compose"))
     // implementation("me.nikhilchaudhari:k5-compose:1.0.0-alpha01")
+    dokkaHtmlPlugin("org.jetbrains.dokka:kotlin-as-java-plugin:1.5.30")
 }
 
 tasks.withType<KotlinCompile>() {
@@ -36,4 +38,8 @@ compose.desktop {
             packageVersion = "1.0.0"
         }
     }
+}
+
+tasks.getByName("dokkaHtml").doLast {
+    exec { commandLine("mv build/dokka api-docs".split(" ")) }
 }
