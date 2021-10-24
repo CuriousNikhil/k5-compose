@@ -46,7 +46,7 @@ No need to manage/remember states, animation or anything. Just focus on your log
 | <video width="500" height="500" style="width: 500px; height: 500px;" src="https://user-images.githubusercontent.com/16976114/138568858-10628d40-05f9-4d0a-94a5-d5068c94c6dc.mov" autoplay muted loop /> | <video width="500" height="500" src="https://user-images.githubusercontent.com/16976114/138568867-1842d1d7-3669-4e38-851f-75a24824f05f.mov" autoplay muted loop /> | <video width="500" height="500" style="width: 500px; height: 500px;" src="https://user-images.githubusercontent.com/16976114/138568878-7c9b5fef-e0cc-4983-9553-319c5b233ec4.mov" autoplay muted /> | <video width="500" height="500" style="width: 500px; height: 500px;" src="https://user-images.githubusercontent.com/16976114/138568885-b01a4749-89ca-439e-94a0-5bb1cae217a3.mov" autoplay muted /> |
 
 
-Click on the link to go to the code. Code explains the things in details. Try playing with those by tweaking values and running on your own. 😄 (I have added videos instead of gifs just so you can view these precisely without loosing any frames 😉)
+Click on the link to go to the code. Code explains the things in details. Try playing with those by tweaking values and running on your own. 😄 (I have added videos instead of gifs just so you can view these without loosing any frames 😉)
 
 
 ## How do I do that?
@@ -147,15 +147,78 @@ To use and understand mathematics and physics I would recommend [Nature Of Code]
 
 ### Vectors
 
-### Noise
+`Vector2D` is data class - a vector representing any vector quantity in 2D plane. You can create a simple vector like `val acceleration = Vector2D(x = 2f, y = 3f)`, this means that the acceleration vector's x component is 2f and y component is 3f.
 
-### Trigonometry
+To perform vector operations there are extensions and operators available to give you all the necessary vector algebra APIs. You can take a look at those methods here in the [API Docs](https://javadoc.io/doc/me.nikhilchaudhari/k5-compose/latest/k5-compose/math/-vector2-d/index.html). 
 
-### Calculations
+Few helper methods available to create vectors from angle and also to create random vectors - 
+
+**Random Vector**
+You can create random unit vector by using static method `randomVector` of `Vector2D` class. This creates a random unit vector.
+
+```kotlin
+val position = Vector2D.randomVector()
+```
+
+**Vector from angle**
+If you want to create a vector using any `angle` you can use `fromAngle` static method. For ex - the below code will create a vector with angle as PI radians and length of 2. (means x = 2 * cos(angle), y = 2 * sin(angle))
+
+```kotlin
+val position = Vector2D.fromAnAngle(angle = PI, length = 2f)
+```
+
+**toOffset**
+There's another handy method to convert your vector to the `Offset` type since you need to pass Offset types while drawing in Jetpack Compose. So you can convert Vector2D into Offset. Using `toOffset` on vector value.
+
+```kotlin
+ val position = Vector2D(2f, 5f)
+    position.toOffSet()
+```
 
 ### Random
 
+You can use the `Random` functions available in Kotlin by default. But you can also use `k5Random`([api doc](https://javadoc.io/doc/me.nikhilchaudhari/k5-compose/latest/k5-compose/math/-random-kt/k5-random.html)) and `randomGaussian`([api doc](https://javadoc.io/doc/me.nikhilchaudhari/k5-compose/latest/k5-compose/math/-random-kt/random-gaussian.html)) functions to generate random values.  
+
+There are other apis also available to set the seed for randomness etc. You can check it [here](https://javadoc.io/doc/me.nikhilchaudhari/k5-compose/latest/k5-compose/math/-random-kt/index.html).
+
+### Noise
+
+Noise is used a lot in p5 to generate a smooth randomness in numbers. This library contains mostly simplex noise helper methods which will generate noise values for you. You can check it [here](https://javadoc.io/doc/me.nikhilchaudhari/k5-compose/latest/k5-compose/math/-noise-kt/index.html). 
+
+P.s: The `Noise` feature needs few improvements which are in progress.
+
+### Trigonometry
+
+You could of course use the basic kotlin.math trigonometric functions but just to keep it in handy this library has extensions functions over `Float` values. So you can just convert any float value to trigonometric function value over this float.
+
+```kotlin
+  val tan = 1f.tan()
+  val cos = 0.2f.cos()
+  val sin = 0.1f.sin()
+
+  val atan = 1f.atan()
+  val acos = 0.2f.acos()
+  val asin = 0.1f.asin()
+```
+
+You can check few more trigonometric functions [here](https://javadoc.io/doc/me.nikhilchaudhari/k5-compose/latest/k5-compose/math/-trigonometry-kt/index.html)
+
+
+**Angle**
+The default angle measurement is in radians. If you want to change the angles to be measured in the degrees, then you can set the `angleMode` to degrees. And degress will be used to measure the angle and in all the functions related to angles.
+
+```kotlin
+angleMode = AngleMode.DEGREES
+```
+
+### Calculations
+
+There are certain calculations that are related to vector, numbers etc which are required when you write physics system in a 2D environment. Those few methods are directly ported from p5.js. You can find some functions like `lerp`, `map`, `norm`, `constrain` etc. [here](https://javadoc.io/doc/me.nikhilchaudhari/k5-compose/latest/k5-compose/math/-calculations-kt/index.html)
+
+
+### Contribution Guide
 
 
 
-
+### License
+Licensed under Apache License, Version 2.0 [here](https://github.com/CuriousNikhil/k5-compose/blob/main/LICENSE)
