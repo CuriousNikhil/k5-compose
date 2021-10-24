@@ -4,11 +4,27 @@
 This library provides you a playground to play with your sketches so you don't have to worry about maintaining & remember `States`, animations etc.
 You can focus on creating awesome sketches, creating generative art. This library also provides you necessary physics and math functions which are ported from p5.js. 
 
+Say for example you can do something like this in just 20 lines of code -
+
+| Moving Vehicle code | K5 Sketch |
+|---|---|
+| ![carbon](https://user-images.githubusercontent.com/16976114/138512721-c580b54e-dcff-46c4-8df6-f43ec4d081f6.png) | ![fastest_gif](https://user-images.githubusercontent.com/16976114/138569158-ac14af91-d9ed-48c4-bd51-65e48a8c71cd.gif) |
+
+
+## Few more examples...
+
+| [parametric eq](https://github.com/CuriousNikhil/k5-compose/blob/main/src/main/kotlin/examples/mathematics/parametric-equation.kt) | [particles js](https://github.com/CuriousNikhil/k5-compose/blob/main/src/main/kotlin/examples/simulations/particles-js-simulation.kt)  | [gravitation](https://github.com/CuriousNikhil/k5-compose/blob/main/src/main/kotlin/examples/forces/GravitationalAttraction.kt)  | [game of life automaton](https://github.com/CuriousNikhil/k5-compose/blob/main/src/main/kotlin/examples/simulations/gameOfLife.kt) |
+|---|---|---|---|
+| <video width="500" height="500" style="width: 500px; height: 500px;" src="https://user-images.githubusercontent.com/16976114/138592033-10030335-326d-409a-a322-ea6ce95b7b78.mov" autoplay muted loop /> | <video width="500" height="500" src="https://user-images.githubusercontent.com/16976114/138592054-92c68869-9e86-452a-bf8a-8bf9dffc89ad.mov" autoplay muted loop /> | <video width="500" height="500" style="width: 500px; height: 500px;" src="https://user-images.githubusercontent.com/16976114/138592061-7cc2a8ae-c4de-40f6-9801-86c28621743c.mov" autoplay muted /> | <video width="500" height="500" style="width: 500px; height: 500px;" src="https://user-images.githubusercontent.com/16976114/138592081-d8661041-4beb-4d44-a640-60753ef87a5b.mov" autoplay muted /> |
+
+
+Click on the link to go to the code. Code explains the things in details. Try playing with those by tweaking values and running on your own. 😄 (I have added videos instead of gifs just so you can view these without loosing any frames 😉)
+
+## Getting started
+
 In order to understand using this library for creating experiments, I would recommend to go through the Nature of Code book by Daniel Shiffman - https://natureofcode.com/book/.
 This will give you the overall knowledge about how a physics system works in simplest way in p5/k5 or in general computer world.  
 However, you could start digging into it right away by checking examples.
-
-## Getting started
 
 1. Create your [Jetpack Compose Desktop](https://github.com/JetBrains/compose-jb) project. Add the following dependency in your `build.gradle` along with the `compose` dependencies
 
@@ -31,22 +47,7 @@ fun main() = k5{
 
 3. Use [library apis](https://javadoc.io/doc/me.nikhilchaudhari/k5-compose/latest/k5-compose/math/index.html) for calculations and you are good to go! :p
 
-Say for example you want to create something like this with 20 lines of code - 
-
-| Moving Vehicle code | K5 Sketch |
-|---|---|
-| ![carbon](https://user-images.githubusercontent.com/16976114/138512721-c580b54e-dcff-46c4-8df6-f43ec4d081f6.png) | ![fastest_gif](https://user-images.githubusercontent.com/16976114/138569158-ac14af91-d9ed-48c4-bd51-65e48a8c71cd.gif) |
-
 No need to manage/remember states, animation or anything. Just focus on your logic to design sketch rest of the things are handled by the library.
-
-## Few more examples...
-
-| [parametric eq](https://github.com/CuriousNikhil/k5-compose/blob/main/src/main/kotlin/examples/mathematics/parametric-equation.kt) | [particles js](https://github.com/CuriousNikhil/k5-compose/blob/main/src/main/kotlin/examples/simulations/particles-js-simulation.kt)  | [gravitation](https://github.com/CuriousNikhil/k5-compose/blob/main/src/main/kotlin/examples/forces/GravitationalAttraction.kt)  | [game of life automaton](https://github.com/CuriousNikhil/k5-compose/blob/main/src/main/kotlin/examples/simulations/gameOfLife.kt) |
-|---|---|---|---|
-| <video width="500" height="500" style="width: 500px; height: 500px;" src="https://user-images.githubusercontent.com/16976114/138592033-10030335-326d-409a-a322-ea6ce95b7b78.mov" autoplay muted loop /> | <video width="500" height="500" src="https://user-images.githubusercontent.com/16976114/138592054-92c68869-9e86-452a-bf8a-8bf9dffc89ad.mov" autoplay muted loop /> | <video width="500" height="500" style="width: 500px; height: 500px;" src="https://user-images.githubusercontent.com/16976114/138592061-7cc2a8ae-c4de-40f6-9801-86c28621743c.mov" autoplay muted /> | <video width="500" height="500" style="width: 500px; height: 500px;" src="https://user-images.githubusercontent.com/16976114/138592081-d8661041-4beb-4d44-a640-60753ef87a5b.mov" autoplay muted /> |
-
-
-Click on the link to go to the code. Code explains the things in details. Try playing with those by tweaking values and running on your own. 😄 (I have added videos instead of gifs just so you can view these without loosing any frames 😉)
 
 
 ## How do I do that?
