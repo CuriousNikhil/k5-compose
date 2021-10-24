@@ -21,20 +21,20 @@ fun Float.cos(): Float {
     return cos(this.toRadians())
 }
 
-fun Float.atan2(y: Float, x: Float): Float {
+fun atan2(y: Float, x: Float): Float {
     return kotlin.math.atan2(y.toDouble(), x.toDouble()).toFloat().toRadians()
 }
 
-fun Float.atan(ratio: Float): Float {
-    return kotlin.math.atan(ratio).toRadians()
+fun Float.atan(): Float {
+    return kotlin.math.atan(this).toRadians()
 }
 
-fun Float.asin(ratio: Float): Float {
-    return kotlin.math.asin(ratio).toRadians()
+fun Float.asin(): Float {
+    return kotlin.math.asin(this).toRadians()
 }
 
-fun Float.acos(ratio: Float): Float {
-    return kotlin.math.acos(ratio).toRadians()
+fun Float.acos(): Float {
+    return kotlin.math.acos(this).toRadians()
 }
 
 /**
