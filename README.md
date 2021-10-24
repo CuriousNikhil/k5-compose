@@ -218,7 +218,7 @@ There are certain calculations that are related to vector, numbers etc which are
 
 ### Contribution Guide
 
-
+PRs are welcomed! Please check contribution guide [here](https://github.com/CuriousNikhil/k5-compose/wiki/Contribution-Guide)
 
 ### License
 Licensed under Apache License, Version 2.0 [here](https://github.com/CuriousNikhil/k5-compose/blob/main/LICENSE)
