@@ -133,7 +133,6 @@ class K5(
      */
     private fun render(modifier: Modifier, sketch: (drawScope: DrawScope) -> Unit) = application {
         val (width, height) = with(LocalDensity.current) { Pair(size.width.toDp(), size.height.toDp()) }
-        println("$width, $height")
         Window(
             onCloseRequest = ::exitApplication,
             state = rememberWindowState(width = width, height = height),
