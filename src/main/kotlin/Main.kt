@@ -1,6 +1,8 @@
 import androidx.compose.ui.ExperimentalComposeUiApi
-import examples.mathematics.simulateRecursion
+import androidx.compose.ui.graphics.ExperimentalGraphicsApi
+import examples.simulations.showPhyllotaxis
 
+@ExperimentalGraphicsApi
 @ExperimentalComposeUiApi
 fun main() {
     // simpleRandomWalk()
@@ -19,6 +21,9 @@ fun main() {
     // simplexNoise()
     // simulateSineWave()
 
-    simulateRecursion()
+    // simulateRecursion()
     // preserveDrawBufferTest()
+
+    // showStarField()
+    showPhyllotaxis()
 }
