@@ -1,5 +1,5 @@
 import androidx.compose.ui.ExperimentalComposeUiApi
-import examples.shm.simulateSineWave
+import examples.mathematics.simulateRecursion
 
 @ExperimentalComposeUiApi
 fun main() {
@@ -17,5 +17,8 @@ fun main() {
     // particleJs()
     // parametricEquation()
     // simplexNoise()
-    simulateSineWave()
+    // simulateSineWave()
+
+    simulateRecursion()
+    // preserveDrawBufferTest()
 }
