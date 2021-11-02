@@ -10,7 +10,7 @@ import math.TWO_PI
 import math.Vector2D
 import math.k5Random
 import math.limit
-import math.noise
+import math.noise2D
 import math.plusAssign
 import math.setMag
 import math.timesAssign
@@ -81,7 +81,7 @@ fun simplexNoise() = k5 {
     var yoff = 0f
     var xoff = 0f
     show { drawScope ->
-        val angle = noise(x = xoff, y = yoff) * TWO_PI + 4
+        val angle = noise2D(x = xoff.toDouble(), y = yoff.toDouble()) * TWO_PI + 4
         val v = Vector2D.fromAnAngle(angle.toFloat())
         v.setMag(1f)
         xoff += inc
