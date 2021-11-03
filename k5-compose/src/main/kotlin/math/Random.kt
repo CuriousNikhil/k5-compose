@@ -1,5 +1,6 @@
 package math
 
+import java.util.concurrent.ThreadLocalRandom
 import kotlin.math.ln
 import kotlin.math.sqrt
 import kotlin.random.Random
@@ -58,6 +59,26 @@ fun k5Random(min: Int = 0, max: Int): Float {
     }
     return rand.toFloat() * (maximum - minimum) + min
 }
+
+/**
+ * Generate random integer number within [this] range
+ */
+fun ClosedRange<Int>.random() = ThreadLocalRandom.current().nextInt(endInclusive - start) + start
+
+/**
+ * Generate random long number within [this] range
+ */
+fun ClosedRange<Long>.random() = ThreadLocalRandom.current().nextLong(endInclusive - start) + start
+
+/**
+ * Generate random float number within [this] range
+ */
+fun ClosedRange<Float>.random() = ThreadLocalRandom.current().nextFloat() * (endInclusive - start) + start
+
+/**
+ * Generate random double number within [this] range
+ */
+fun ClosedRange<Double>.random() = ThreadLocalRandom.current().nextDouble(endInclusive - start) + start
 
 /**
  * Generates a random gaussian with [mean] value and [standardDeviation]
