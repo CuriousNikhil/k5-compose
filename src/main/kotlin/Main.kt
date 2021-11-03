@@ -1,6 +1,7 @@
+
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.graphics.ExperimentalGraphicsApi
-import examples.simulations.showPhyllotaxis
+import examples.mathematics.showCircleLoop
 
 @ExperimentalGraphicsApi
 @ExperimentalComposeUiApi
@@ -25,5 +26,11 @@ fun main() {
     // preserveDrawBufferTest()
 
     // showStarField()
-    showPhyllotaxis()
+    // showPhyllotaxis()
+    // theTenPrint()
+    // simplexNoise()
+    // showYarns()
+    // showBlackHole()
+    // showFireWorks()
+    showCircleLoop()
 }
