@@ -178,15 +178,21 @@ There's another handy method to convert your vector to the `Offset` type since y
 
 ### Random
 
-You can use the `Random` functions available in Kotlin by default. But you can also use `k5Random`([api doc](https://javadoc.io/doc/me.nikhilchaudhari/k5-compose/latest/k5-compose/math/-random-kt/k5-random.html)) and `randomGaussian`([api doc](https://javadoc.io/doc/me.nikhilchaudhari/k5-compose/latest/k5-compose/math/-random-kt/random-gaussian.html)) functions to generate random values.  
+You can use the `Random` functions available in Kotlin by default. 
+To quickly generate any random number within particular range, there are helper extensions available over `ClosedRange` for any Number data types. 
 
-There are other apis also available to set the seed for randomness etc. You can check it [here](https://javadoc.io/doc/me.nikhilchaudhari/k5-compose/latest/k5-compose/math/-random-kt/index.html).
+For ex - `(-12f..-8f).random()` or `(1..40).random()` or `(1.0..10.0).random()` etc
+
+If you want ot generate `randomGaussian` or a random number with your custom set `seed` value, apis are available to set the seed for randomness etc. You can check it [here](https://javadoc.io/doc/me.nikhilchaudhari/k5-compose/latest/k5-compose/math/-random-kt/index.html). And you can use `k5Random`([api doc](https://javadoc.io/doc/me.nikhilchaudhari/k5-compose/latest/k5-compose/math/-random-kt/k5-random.html)) and `randomGaussian`([api doc](https://javadoc.io/doc/me.nikhilchaudhari/k5-compose/latest/k5-compose/math/-random-kt/random-gaussian.html)) functions to generate random values.  
+
 
 ### Noise
 
-Noise is used a lot in p5 to generate a smooth randomness in numbers. This library contains mostly simplex noise helper methods which will generate noise values for you. You can check it [here](https://javadoc.io/doc/me.nikhilchaudhari/k5-compose/latest/k5-compose/math/-noise-kt/index.html). 
+Noise is used a lot in p5 to generate a smooth randomness in numbers. This library contains Perlin noise helper methods which will generate noise values. You can check it [here](https://javadoc.io/doc/me.nikhilchaudhari/k5-compose/latest/k5-compose/math/-noise-kt/index.html). 
 
-P.s: The `Noise` feature needs few improvements which are in progress.
+There are three methods available for generating noise values - `noise1D(x: Double)`, `fun noise2D(x: Double, y: Double)` and `fun noise3D(x: Double, y: Double, z: Double)` 
+
+If you don't know what noise is please take a look [here](https://en.wikipedia.org/wiki/Perlin_noise)
 
 ### Trigonometry
 
