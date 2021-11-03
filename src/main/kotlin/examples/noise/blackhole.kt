@@ -18,17 +18,15 @@ fun showBlackHole() = k5 {
     angleMode = AngleMode.DEGREES
 
     var circleNumbers = 200
-    val density = 400f
     val circleGap = 0.01f
     var i = 0
     show {
 
         it.apply {
-            val kMax = (0.5f..1f).random()
             while (i <= circleNumbers) {
                 val radius = (this.size.width / 10) + i * 0.05f
-                val k = kMax * sqrt(1.0 * i / circleNumbers).toFloat()
-                val noisiness = density * (1.0f * i / circleNumbers).pow(2)
+                val k = (0.5f..1f).random() * sqrt(1.0 * i / circleNumbers).toFloat()
+                val noisiness = 400f * (1.0f * i / circleNumbers).pow(2)
 
                 var theta = 0f
                 var bx = 0f
