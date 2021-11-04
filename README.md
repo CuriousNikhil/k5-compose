@@ -11,14 +11,22 @@ Say for example you can do something like this in just 20 lines of code -
 | ![carbon](https://user-images.githubusercontent.com/16976114/138512721-c580b54e-dcff-46c4-8df6-f43ec4d081f6.png) | ![fastest_gif](https://user-images.githubusercontent.com/16976114/138569158-ac14af91-d9ed-48c4-bd51-65e48a8c71cd.gif) |
 
 
-## Few more examples...
+## Few examples...
 
 | [parametric eq](https://github.com/CuriousNikhil/k5-compose/blob/main/src/main/kotlin/examples/mathematics/parametric-equation.kt) | [particles js](https://github.com/CuriousNikhil/k5-compose/blob/main/src/main/kotlin/examples/simulations/particles-js-simulation.kt)  | [gravitation](https://github.com/CuriousNikhil/k5-compose/blob/main/src/main/kotlin/examples/forces/GravitationalAttraction.kt)  | [game of life automaton](https://github.com/CuriousNikhil/k5-compose/blob/main/src/main/kotlin/examples/simulations/gameOfLife.kt) |
 |---|---|---|---|
 | <video width="500" height="500" style="width: 500px; height: 500px;" src="https://user-images.githubusercontent.com/16976114/138592033-10030335-326d-409a-a322-ea6ce95b7b78.mov" autoplay muted loop /> | <video width="500" height="500" src="https://user-images.githubusercontent.com/16976114/138592054-92c68869-9e86-452a-bf8a-8bf9dffc89ad.mov" autoplay muted loop /> | <video width="500" height="500" style="width: 500px; height: 500px;" src="https://user-images.githubusercontent.com/16976114/138592061-7cc2a8ae-c4de-40f6-9801-86c28621743c.mov" autoplay muted /> | <video width="500" height="500" style="width: 500px; height: 500px;" src="https://user-images.githubusercontent.com/16976114/138592081-d8661041-4beb-4d44-a640-60753ef87a5b.mov" autoplay muted /> |
 
-
 Click on the link to go to the code. Code explains the things in details. Try playing with those by tweaking values and running on your own. 😄 (I have added videos instead of gifs just so you can view these without loosing any frames 😉)
+
+### Generative Art with K5-Compose
+
+All the examples can be found [here](https://github.com/CuriousNikhil/k5-compose/tree/main/src/main/kotlin/examples)
+
+| Blackhole | 10Print | Circle Loop | 
+|---|---|---|
+| ![image](https://user-images.githubusercontent.com/16976114/140384540-df60fac9-7ab6-4cf9-825d-ecabc7ea8626.png) | ![image](https://user-images.githubusercontent.com/16976114/140384588-b59d39ff-6aa8-4f19-96b0-63c225825765.png) | ![image](https://user-images.githubusercontent.com/16976114/140384655-1de371e4-f074-4f5d-9793-9d8577c2d5f3.png) |
+
 
 ## Getting started
 
