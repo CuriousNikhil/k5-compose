@@ -1,7 +1,9 @@
 package examples.particles
 
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ExperimentalGraphicsApi
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import k5
 import math.Vector2D
@@ -14,7 +16,6 @@ import kotlin.random.Random
 
 val gravity = Vector2D(0f, 0.2f)
 
-// TODO: [WIP] Fix the display of fireworks!
 data class FireWorkParticle(
     val x: Float,
     val y: Float,
@@ -28,7 +29,7 @@ data class FireWorkParticle(
 
     init {
         if (isFireWork) {
-            velocity = Vector2D(0f, (-12f..-8f).random())
+            velocity = Vector2D(0f, (-15f..-18f).random())
         } else {
             velocity = Vector2D.randomVector()
             velocity.multiply((2f..10f).random())
@@ -51,13 +52,15 @@ data class FireWorkParticle(
 
     fun isDone() = lifespan < 0
 
-    // @ExperimentalGraphicsApi
+    @ExperimentalGraphicsApi
     fun show(drawScope: DrawScope) {
         if (!isFireWork) {
             val alpha = map(lifespan, 255f, 1f, 1f, 0f)
-            drawScope.drawCircle(Color.Yellow, 5f, position.toOffSet())
+            drawScope.drawCircle(Color.hsv(hu, 1f, 1f), 5f, position.toOffSet(), alpha = alpha)
         } else {
-            drawScope.drawCircle(Color.Yellow, 10f, position.toOffSet())
+            drawScope.drawRect(Color.hsv(hu, 1f, 1f), position.toOffSet(), Size(5f, 10f))
+            val offset = Offset(position.x + 2f, position.y)
+            drawScope.drawCircle(Color.hsv(hu, 1f, 1f), 5f, offset)
         }
     }
 }
@@ -81,12 +84,12 @@ data class FireWork(val dimens: Size) {
             }
         }
 
-        for (i in (particles.size - 1)..0) {
-            particles[i].applyForece(gravity)
-            particles[i].update()
+        if (particles.isNotEmpty()) {
+            for (i in particles.size - 1 downTo 0) {
+                particles[i].applyForece(gravity)
+                particles[i].update()
 
-            if (particles[i].isDone()) {
-                particles.removeSlice(1, i)
+                particles.removeAll { it.isDone() }
             }
         }
     }
@@ -98,7 +101,7 @@ data class FireWork(val dimens: Size) {
         }
     }
 
-    // @ExperimentalGraphicsApi
+    @ExperimentalGraphicsApi
     fun show(drawScope: DrawScope) {
         if (!isExploded) {
             firework.show(drawScope)
@@ -109,32 +112,25 @@ data class FireWork(val dimens: Size) {
     }
 }
 
-// @ExperimentalGraphicsApi
+@ExperimentalGraphicsApi
 fun showFireWorks() = k5 {
 
     val fireworks = mutableListOf<FireWork>()
-    fireworks.add(FireWork((dimensFloat)))
-    fireworks.add(FireWork((dimensFloat)))
+    repeat(10) {
+        fireworks.add(FireWork((dimensFloat)))
+    }
 
-    show {
+    show { drawScope ->
 
-        if (Random.nextFloat() < 0.04) {
-            fireworks.add(FireWork((dimensFloat)))
+        if (Random.nextFloat() < 0.04f) {
+            fireworks.add(FireWork(dimensFloat))
         }
 
-        println(fireworks.size)
-
-        for (i in (fireworks.size - 1)..0) {
+        for (i in (fireworks.size - 1) downTo 0) {
             fireworks[i].update()
-            fireworks[i].show(it)
+            fireworks[i].show(drawScope)
 
-            if (fireworks[i].isDone()) {
-                fireworks.removeSlice(1, i)
-            }
+            fireworks.removeAll { it.isDone() }
         }
     }
-}
-
-fun <E> MutableList<E>.removeSlice(from: Int, end: Int) {
-    this.removeAll(this.subList(from, end + 1))
 }
