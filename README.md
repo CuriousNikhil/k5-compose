@@ -26,8 +26,9 @@ All the examples can be found [here](https://github.com/CuriousNikhil/k5-compose
 | Blackhole | 10Print | Circle Loop | 
 |---|---|---|
 | ![image](https://user-images.githubusercontent.com/16976114/140384540-df60fac9-7ab6-4cf9-825d-ecabc7ea8626.png) | ![image](https://user-images.githubusercontent.com/16976114/140384588-b59d39ff-6aa8-4f19-96b0-63c225825765.png) | ![image](https://user-images.githubusercontent.com/16976114/140384655-1de371e4-f074-4f5d-9793-9d8577c2d5f3.png) |
-| Threads with Perlin-Noise |
-| ![image](https://user-images.githubusercontent.com/16976114/140385172-de1f86c5-0e99-4ef7-81ac-0fd6777e99d0.png) |
+| Threads with Perlin-Noise | Phyllotaxis |
+| ![image](https://user-images.githubusercontent.com/16976114/140385172-de1f86c5-0e99-4ef7-81ac-0fd6777e99d0.png) | ![image](https://user-images.githubusercontent.com/16976114/140390189-7ab55cb2-1b9b-479c-a47f-77862a34d1db.png) |
+
 
 
 
