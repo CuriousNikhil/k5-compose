@@ -22,3 +22,5 @@ enum class AngleMode {
 const val DEG_TO_RAD = _PI / 180.0
 
 const val RAD_TO_DEG = 180.0 / _PI
+
+const val TAU = 6.2831855
