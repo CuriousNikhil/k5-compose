@@ -9,7 +9,6 @@ import k5
 import math.map
 import math.random
 
-// TODO: [WIP] Fix the translated view
 data class Star(val dimens: Size) {
     val width = dimens.width
     val height = dimens.height

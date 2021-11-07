@@ -1,7 +1,7 @@
 
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.graphics.ExperimentalGraphicsApi
-import examples.mathematics.showCircleLoop
+import examples.particles.showRain
 
 @ExperimentalGraphicsApi
 @ExperimentalComposeUiApi
@@ -32,5 +32,6 @@ fun main() {
     // showYarns()
     // showBlackHole()
     // showFireWorks()
-    showCircleLoop()
+    // showCircleLoop()
+    showRain()
 }
