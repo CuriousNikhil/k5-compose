@@ -90,8 +90,7 @@ You can pass `size` param in `k5()`
   fun main() = k5(size = Size(800f, 500f)) { ... }
 ```
 
-And there are more number of configurations you can do to k5-compose playground which will be applied to the `Window{..}` composable. You can check API docs.
-// TODO - api docs.
+And there are more number of configurations you can do to k5-compose playground which will be applied to the `Window{..}` composable. You can check [API docs](https://javadoc.io/doc/me.nikhilchaudhari/k5-compose/latest/index.html).
 
 
 ### show
