@@ -1,7 +1,7 @@
 
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.graphics.ExperimentalGraphicsApi
-import examples.simulations.showRotatingSquares
+import examples.simulations.showMatrixGreenRain
 
 @ExperimentalGraphicsApi
 @ExperimentalComposeUiApi
@@ -35,5 +35,7 @@ fun main() {
     // showCircleLoop()
     // showRain()
     // showSkyline()
-    showRotatingSquares()
+    // showRotatingSquares()
+
+    showMatrixGreenRain()
 }
