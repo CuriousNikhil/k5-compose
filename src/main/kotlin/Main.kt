@@ -1,7 +1,7 @@
 
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.graphics.ExperimentalGraphicsApi
-import examples.simulations.showMatrixGreenRain
+import examples.particles.showRain
 
 @ExperimentalGraphicsApi
 @ExperimentalComposeUiApi
@@ -33,9 +33,9 @@ fun main() {
     // showBlackHole()
     // showFireWorks()
     // showCircleLoop()
-    // showRain()
+    showRain()
     // showSkyline()
     // showRotatingSquares()
 
-    showMatrixGreenRain()
+    // showMatrixGreenRain()
 }

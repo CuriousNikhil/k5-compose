@@ -20,17 +20,21 @@ fun showRain() = k5 {
         r.add(Random.nextFloat())
     }
 
-    show(modifier = Modifier.background(Color(0xffaec6cf))) {
+    show(modifier = Modifier.background(Color(0xFFE8FFFF))) {
 
         t += 0.002f
         for (i in 0 until N) {
+            val x = dimensFloat.width * r[(i + 2) % N]
+            val y = (tan(-PI / 2 + TAU * (t + r[i])) * 10 + dimensFloat.width * (1 - r[(i + 1) % N])).toFloat()
+            val radius = 10 * r[(i + 3) % N]
             it.drawCircle(
-                Color.Cyan,
+                Color(0xff3498db),
                 center = Offset(
-                    x = dimensFloat.width * r[(i + 2) % N],
-                    y = (tan(-PI / 2 + TAU * (t + r[i])) * 10 + dimensFloat.width * (1 - r[(i + 1) % N])).toFloat()
+                    x = x,
+                    y = y
                 ),
-                radius = 10 * r[(i + 3) % N]
+                radius = radius,
+                alpha = 0.7f
             )
         }
     }
