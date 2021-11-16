@@ -1,7 +1,7 @@
 # k5-compose
 **k5-compose** is a sketchy port of [P5.js](https://p5js.org/) for Jetpack Compose Desktop.
 
-This library provides you a playground to play with your sketches so you don't have to worry about maintaining & remember `States`, animations etc.
+This library provides you a playground to play with your sketches so you don't have to worry about maintaining/remembering states and setting up the animations etc.
 You can focus on creating awesome sketches, creating generative art. This library also provides you necessary physics and math functions which are ported from p5.js. 
 
 Say for example you can do something like this in just 20 lines of code -
