@@ -1,7 +1,7 @@
 
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.graphics.ExperimentalGraphicsApi
-import examples.simulations.showRecursiveTree
+import examples.simulations.showWaveMaker
 
 @ExperimentalGraphicsApi
 @ExperimentalComposeUiApi
@@ -39,5 +39,6 @@ fun main() {
 
     // showMatrixGreenRain()
 
-    showRecursiveTree()
+    // showRecursiveTree()
+    showWaveMaker()
 }
