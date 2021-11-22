@@ -1,7 +1,7 @@
 
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.graphics.ExperimentalGraphicsApi
-import examples.simulations.showWaveMaker
+import examples.simulations.showCircleGrid
 
 @ExperimentalGraphicsApi
 @ExperimentalComposeUiApi
@@ -40,5 +40,6 @@ fun main() {
     // showMatrixGreenRain()
 
     // showRecursiveTree()
-    showWaveMaker()
+    // showWaveMaker()
+    showCircleGrid()
 }
