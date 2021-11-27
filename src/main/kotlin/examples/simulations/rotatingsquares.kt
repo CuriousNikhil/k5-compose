@@ -10,7 +10,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import k5
 
-data class Rect(
+data class Rectangles(
     val size: Dp,
     val offsetX: Dp,
     val offsetY: Dp,
@@ -20,7 +20,7 @@ data class Rect(
 fun showRotatingSquares() = k5 {
 
     val n = 35
-    val rectList = mutableListOf<Rect>()
+    val rectList = mutableListOf<Rectangles>()
     var angle = 0f
 
     val rectSize = 15.dp
@@ -36,7 +36,7 @@ fun showRotatingSquares() = k5 {
             val s = rectSize * i
             val offsetX = -s / 2
             val offsetY = -s / 2
-            val rect = Rect(s, offsetX, offsetY, colorList[i % colorList.size])
+            val rect = Rectangles(s, offsetX, offsetY, colorList[i % colorList.size])
             rectList.add(rect)
         }
 

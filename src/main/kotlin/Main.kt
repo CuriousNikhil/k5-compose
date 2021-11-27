@@ -1,7 +1,7 @@
 
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.graphics.ExperimentalGraphicsApi
-import examples.simulations.showCircleGrid
+import examples.simulations.showHearts
 
 @ExperimentalGraphicsApi
 @ExperimentalComposeUiApi
@@ -41,5 +41,8 @@ fun main() {
 
     // showRecursiveTree()
     // showWaveMaker()
-    showCircleGrid()
+    // showCircleGrid()
+    // showAbstractDots()
+    // showVoid()
+    showHearts()
 }
