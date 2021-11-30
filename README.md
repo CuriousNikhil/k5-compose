@@ -18,8 +18,12 @@ Say for example you can do something like this in just 20 lines of code -
 | <video width="500" height="500" style="width: 500px; height: 500px;" src="https://user-images.githubusercontent.com/16976114/138592033-10030335-326d-409a-a322-ea6ce95b7b78.mov" autoplay muted loop /> | <video width="500" height="500" src="https://user-images.githubusercontent.com/16976114/138592054-92c68869-9e86-452a-bf8a-8bf9dffc89ad.mov" autoplay muted loop /> | <video width="500" height="500" style="width: 500px; height: 500px;" src="https://user-images.githubusercontent.com/16976114/138592061-7cc2a8ae-c4de-40f6-9801-86c28621743c.mov" autoplay muted /> | <video width="500" height="500" style="width: 500px; height: 500px;" src="https://user-images.githubusercontent.com/16976114/138592081-d8661041-4beb-4d44-a640-60753ef87a5b.mov" autoplay muted /> | 
 | Starfield | Rain drops | Fractal tree | Fireworks |
 | <video width="500" height="500" style="width: 500px; height: 500px;" src="https://user-images.githubusercontent.com/16976114/140640787-b3d9f780-02f4-42e3-9849-c7b18f180646.mov" autoplay muted /> | <video width="500" height="500" style="width: 500px; height: 500px;" src="https://user-images.githubusercontent.com/16976114/140640784-f588c34a-187b-4e21-8df0-dae5a4cdfb07.mov" autoplay muted /> | <video width="500" height="500" src="https://user-images.githubusercontent.com/16976114/142251242-00474644-4dd9-4679-b9cf-99e8226ca895.mov" /> | <video width="500" height="500" src="https://user-images.githubusercontent.com/16976114/142251588-a4c7b042-72d7-4122-92ac-362176547670.mov" /> |
-| Circle waves | CircleGrid | | |
-| <video width="500" height="500" src="https://user-images.githubusercontent.com/16976114/142757121-f439527e-981c-4513-bac8-1e2eb38b8556.mov" /> |  | | |
+| Circle waves | CircleGrid | Hearts | |
+| <video width="500" height="500" src="https://user-images.githubusercontent.com/16976114/142757121-f439527e-981c-4513-bac8-1e2eb38b8556.mov" /> | <video width="500" height="500" src="https://user-images.githubusercontent.com/16976114/144030859-9ed897dd-e1cf-4ad7-acb6-80337df04696.mov" /> | | |
+
+
+
+
 
 
 
