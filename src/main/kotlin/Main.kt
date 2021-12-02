@@ -1,6 +1,7 @@
 
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.graphics.ExperimentalGraphicsApi
+import examples.elye.simpleGame
 import examples.simulations.showHearts
 
 @ExperimentalGraphicsApi
@@ -44,5 +45,6 @@ fun main() {
     // showCircleGrid()
     // showAbstractDots()
     // showVoid()
-    showHearts()
+    // showHearts()
+    simpleGame()
 }
