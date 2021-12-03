@@ -1,4 +1,4 @@
-package examples.noise
+package examples.elye
 
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color

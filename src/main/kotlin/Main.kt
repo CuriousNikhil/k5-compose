@@ -1,8 +1,7 @@
 
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.graphics.ExperimentalGraphicsApi
-import examples.elye.perlinnoise2d
-import examples.noise.danceYarnMouse
+import examples.elye.danceYarnAuto
 
 @ExperimentalGraphicsApi
 @ExperimentalComposeUiApi
@@ -51,5 +50,6 @@ fun main() {
     // perlinnoise1d()
     // perlinnoise2d()
     // classicyarnanimated()
-    danceYarnMouse()
+    // danceYarnMouse()
+    danceYarnAuto()
 }
