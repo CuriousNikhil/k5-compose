@@ -1,6 +1,7 @@
 
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.graphics.ExperimentalGraphicsApi
+import examples.elye.classicyarnanimated
 import examples.elye.perlinnoise1d
 
 @ExperimentalGraphicsApi
@@ -47,5 +48,6 @@ fun main() {
     // showHearts()
     // simpleGame()
     // mandelbrot()
-    perlinnoise1d()
+    // perlinnoise1d()
+    classicyarnanimated()
 }
