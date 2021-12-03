@@ -27,7 +27,7 @@ fun landscapeInspection() {
                 for (x in 0 until loop) {
                     val noiseInputX = x * 0.002
                     val noiseInputY = offset * 0.02
-                    val valueY = dimensFloat.height / 1.5 - noise2D(noiseInputX, noiseInputY) * dimensFloat.height
+                    val valueY = dimensFloat.height - noise2D(noiseInputX, noiseInputY) * dimensFloat.height
                     val colorRed = (noise2D(noiseInputX, noiseInputY) * 0xFF).toInt()
                     val colorGreen = (noise2D(noiseInputX, noiseInputY + 10) * 0xFF).toInt()
                     val colorBlue = (noise2D(noiseInputX, noiseInputY + 20) * 0xFF).toInt()
