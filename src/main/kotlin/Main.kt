@@ -2,6 +2,7 @@
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.graphics.ExperimentalGraphicsApi
 import examples.elye.perlinnoise2d
+import examples.noise.danceYarnMouse
 
 @ExperimentalGraphicsApi
 @ExperimentalComposeUiApi
@@ -48,6 +49,7 @@ fun main() {
     // simpleGame()
     // mandelbrot()
     // perlinnoise1d()
-    perlinnoise2d()
+    // perlinnoise2d()
     // classicyarnanimated()
+    danceYarnMouse()
 }
