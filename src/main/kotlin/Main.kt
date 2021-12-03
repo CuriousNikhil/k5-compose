@@ -1,8 +1,7 @@
 
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.graphics.ExperimentalGraphicsApi
-import examples.elye.classicyarnanimated
-import examples.elye.perlinnoise1d
+import examples.elye.perlinnoise2d
 
 @ExperimentalGraphicsApi
 @ExperimentalComposeUiApi
@@ -49,5 +48,6 @@ fun main() {
     // simpleGame()
     // mandelbrot()
     // perlinnoise1d()
-    classicyarnanimated()
+    perlinnoise2d()
+    // classicyarnanimated()
 }
