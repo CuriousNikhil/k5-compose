@@ -1,7 +1,7 @@
 
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.graphics.ExperimentalGraphicsApi
-import examples.elye.mandelbrot
+import examples.elye.perlinnoise1d
 
 @ExperimentalGraphicsApi
 @ExperimentalComposeUiApi
@@ -46,5 +46,6 @@ fun main() {
     // showVoid()
     // showHearts()
     // simpleGame()
-    mandelbrot()
+    // mandelbrot()
+    perlinnoise1d()
 }
