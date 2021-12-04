@@ -18,8 +18,8 @@ Say for example you can do something like this in just 20 lines of code -
 | <video width="500" height="500" style="width: 500px; height: 500px;" src="https://user-images.githubusercontent.com/16976114/138592033-10030335-326d-409a-a322-ea6ce95b7b78.mov" autoplay muted loop /> | <video width="500" height="500" src="https://user-images.githubusercontent.com/16976114/138592054-92c68869-9e86-452a-bf8a-8bf9dffc89ad.mov" autoplay muted loop /> | <video width="500" height="500" style="width: 500px; height: 500px;" src="https://user-images.githubusercontent.com/16976114/138592061-7cc2a8ae-c4de-40f6-9801-86c28621743c.mov" autoplay muted /> | <video width="500" height="500" style="width: 500px; height: 500px;" src="https://user-images.githubusercontent.com/16976114/138592081-d8661041-4beb-4d44-a640-60753ef87a5b.mov" autoplay muted /> | 
 | Starfield | Rain drops | Fractal tree | Fireworks |
 | <video width="500" height="500" style="width: 500px; height: 500px;" src="https://user-images.githubusercontent.com/16976114/140640787-b3d9f780-02f4-42e3-9849-c7b18f180646.mov" autoplay muted /> | <video width="500" height="500" style="width: 500px; height: 500px;" src="https://user-images.githubusercontent.com/16976114/140640784-f588c34a-187b-4e21-8df0-dae5a4cdfb07.mov" autoplay muted /> | <video width="500" height="500" src="https://user-images.githubusercontent.com/16976114/142251242-00474644-4dd9-4679-b9cf-99e8226ca895.mov" /> | <video width="500" height="500" src="https://user-images.githubusercontent.com/16976114/142251588-a4c7b042-72d7-4122-92ac-362176547670.mov" /> |
-| Circle waves | CircleGrid | Hearts | |
-| <video width="500" height="500" src="https://user-images.githubusercontent.com/16976114/142757121-f439527e-981c-4513-bac8-1e2eb38b8556.mov" /> | <video width="500" height="500" src="https://user-images.githubusercontent.com/16976114/144030859-9ed897dd-e1cf-4ad7-acb6-80337df04696.mov" /> | | |
+| Circle waves | CircleGrid | danceYarn (by [@elye_project](https://twitter.com/elye_project)) | landscapeInspection (by [@elye_project](https://twitter.com/elye_project)) |
+| <video width="500" height="500" src="https://user-images.githubusercontent.com/16976114/142757121-f439527e-981c-4513-bac8-1e2eb38b8556.mov" /> | <video width="500" height="500" src="https://user-images.githubusercontent.com/16976114/144030859-9ed897dd-e1cf-4ad7-acb6-80337df04696.mov" /> | <video width="500" height="500" src="https://user-images.githubusercontent.com/16976114/144699346-1eabc21f-4084-4696-b28d-10a5b379a13c.mov" /> | <video width="500" height="500" src="https://user-images.githubusercontent.com/16976114/144699446-067b580f-bc95-4cf3-9fb2-d2e6fc92a75d.mov" />  |
 
 
 
@@ -27,7 +27,10 @@ Say for example you can do something like this in just 20 lines of code -
 
 
 
-Click on the link to go to the code. Code explains the things in details. Try playing with those by tweaking values and running on your own. 😄 (I have added videos instead of gifs just so you can view these without loosing any frames 😉)
+
+Click on the link to go to the code. Code explains the things in details. Try playing with those by tweaking values and running on your own. 😄 (I have added videos instead of gifs just so you can view these without loosing any frames 😉) 
+
+
 
 ### Generative Art with K5-Compose
 
@@ -36,8 +39,13 @@ All the examples can be found [here](https://github.com/CuriousNikhil/k5-compose
 | Blackhole | 10Print | Circle Loop | 
 |---|---|---|
 | ![image](https://user-images.githubusercontent.com/16976114/140384540-df60fac9-7ab6-4cf9-825d-ecabc7ea8626.png) | ![image](https://user-images.githubusercontent.com/16976114/140384588-b59d39ff-6aa8-4f19-96b0-63c225825765.png) | ![image](https://user-images.githubusercontent.com/16976114/140384655-1de371e4-f074-4f5d-9793-9d8577c2d5f3.png) |
-| Threads with Perlin-Noise | Phyllotaxis |
-| ![image](https://user-images.githubusercontent.com/16976114/140385172-de1f86c5-0e99-4ef7-81ac-0fd6777e99d0.png) | ![image](https://user-images.githubusercontent.com/16976114/140390189-7ab55cb2-1b9b-479c-a47f-77862a34d1db.png) |
+| Threads with Perlin-Noise | Phyllotaxis | Mandlebrot (by [@elye_project](https://twitter.com/elye_project)) |
+| ![image](https://user-images.githubusercontent.com/16976114/140385172-de1f86c5-0e99-4ef7-81ac-0fd6777e99d0.png) | ![image](https://user-images.githubusercontent.com/16976114/140390189-7ab55cb2-1b9b-479c-a47f-77862a34d1db.png) | ![image](https://user-images.githubusercontent.com/16976114/144698909-2b8a6c46-55f1-4e83-ab15-08f1a5ac8618.png) |
+| Perlin noise1d (by [@elye_project](https://twitter.com/elye_project)) | Perlin noise2d (by [@elye_project](https://twitter.com/elye_project)) | |
+| ![image](https://user-images.githubusercontent.com/16976114/144699041-fcfd3bad-bbae-4b16-819a-16edb5911eba.png) | ![image](https://user-images.githubusercontent.com/16976114/144699111-08e3157c-2f46-43bf-946c-9ff240a3d169.png) |
+
+
+
 
 
 
@@ -242,6 +250,12 @@ angleMode = AngleMode.DEGREES
 ### Calculations
 
 There are certain calculations that are related to vector, numbers etc which are required when you write physics system in a 2D environment. Those few methods are directly ported from p5.js. You can find some functions like `lerp`, `map`, `norm`, `constrain` etc. [here](https://javadoc.io/doc/me.nikhilchaudhari/k5-compose/latest/k5-compose/math/-calculations-kt/index.html)
+
+
+### Contributors
+
+* [@elye_project](https://twitter.com/elye_project) has added awesome animations using perlin noise check them out [here](https://github.com/CuriousNikhil/k5-compose/tree/main/src/main/kotlin/examples/elye)
+  * He has also written a blog post- [How to write animations under 50 lines using K5 Compose in Jetpack Compose](https://medium.com/mobile-app-development-publication/jetpack-compose-animation-under-50-lines-using-k5-compose-playground-bef35060c471)
 
 
 ### Contribution Guide
