@@ -1,7 +1,8 @@
 
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.graphics.ExperimentalGraphicsApi
-import examples.simulations.showHearts
+import examples.elye.danceYarnAuto
+import examples.elye.landscapeInspection
 
 @ExperimentalGraphicsApi
 @ExperimentalComposeUiApi
@@ -44,5 +45,13 @@ fun main() {
     // showCircleGrid()
     // showAbstractDots()
     // showVoid()
-    showHearts()
+    // showHearts()
+    // simpleGame()
+    // mandelbrot()
+    // perlinnoise1d()
+    // perlinnoise2d()
+    // classicyarnanimated()
+    // danceYarnMouse()
+    // danceYarnAuto()
+    landscapeInspection()
 }
