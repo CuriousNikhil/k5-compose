@@ -11,11 +11,14 @@ import math.noise3D
 
 fun danceYarnMouse() = k5 {
     val mouseVector = Vector2D()
-    show(modifier = Modifier
-        .pointerMoveFilter(onMove = {
-            mouseVector.x = it.x
-            mouseVector.y = it.y
-            false })) {
+    show(
+        modifier = Modifier
+            .pointerMoveFilter(onMove = {
+                mouseVector.x = it.x
+                mouseVector.y = it.y
+                false
+            })
+    ) {
         it.apply {
             var offset = 0.0
             val m2d = mouseVector.x * 0.002
@@ -23,7 +26,7 @@ fun danceYarnMouse() = k5 {
             for (i in 1000 until 1200) {
                 fun noiseX(variant: Double) = 2 * dimensFloat.width * noise3D(variant, m2d, m3d)
                 fun noiseY(variant: Double) = 2 * dimensFloat.height * noise3D(offset + variant, m2d, m3d)
-                fun color(variant: Double) =  0xFF - (0xFF * noise3D(variant, m2d, m3d)).toInt()
+                fun color(variant: Double) = 0xFF - (0xFF * noise3D(variant, m2d, m3d)).toInt()
                 val x = FloatArray(3) { index -> noiseX(offset + 5 + index * 10).toFloat() }
                 val y = FloatArray(3) { index -> noiseY(offset + 5 + index * 10).toFloat() }
                 val path = Path()

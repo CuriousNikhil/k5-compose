@@ -4,7 +4,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerMoveFilter
 import k5
-import math.*
+import math.Vector2D
+import math.limit
+import math.plusAssign
+import math.random
+import math.set
+import math.sub
+import math.toOffSet
 
 private const val BALL_RADIUS = 30f
 
@@ -21,12 +27,14 @@ fun simpleGame() = k5 {
     fun moveStar() { starPosition += Vector2D(0f, velocity) }
     fun collide() =
         (kotlin.math.abs(starPosition.x - vehiclePosition.x) < BALL_RADIUS * 2) &&
-                (kotlin.math.abs(starPosition.y - vehiclePosition.y) < BALL_RADIUS * 2)
-    show(modifier =
-    Modifier.pointerMoveFilter(onMove = {
-        mouseVector.x = it.x
-        mouseVector.y = vehicleY
-        false })
+            (kotlin.math.abs(starPosition.y - vehiclePosition.y) < BALL_RADIUS * 2)
+    show(
+        modifier =
+        Modifier.pointerMoveFilter(onMove = {
+            mouseVector.x = it.x
+            mouseVector.y = vehicleY
+            false
+        })
     ) {
         vehiclePosition += mouseVector.copy().sub(vehiclePosition).limit(5f)
 

@@ -34,9 +34,12 @@ fun landscapeInspection() {
 
                     val pointVector2D = Vector2D(x.toFloat() / loop * dimensFloat.width, valueY.toFloat())
                     it.drawPoints(
-                        listOf(Offset(
-                            pointVector2D.x + ((mouseVector.x - dimensFloat.width/2)/mouseInsensitivity) * (offset - slices/2),
-                            pointVector2D.y + ((mouseVector.y)/mouseInsensitivity) * (offset - slices/2))),
+                        listOf(
+                            Offset(
+                                pointVector2D.x + ((mouseVector.x - dimensFloat.width / 2) / mouseInsensitivity) * (offset - slices / 2),
+                                pointVector2D.y + ((mouseVector.y) / mouseInsensitivity) * (offset - slices / 2)
+                            )
+                        ),
                         PointMode.Points,
                         Color(colorRed, colorGreen, colorBlue, 0xFF),
                         2f
