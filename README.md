@@ -24,9 +24,7 @@ Say for example you can do something like this in just 20 lines of code -
 
 
 
-
-
-
+**Also don't forget to check awesome [examples and blog posts by few contributors](#contributors)**
 
 Click on the link to go to the code. Code explains the things in details. Try playing with those by tweaking values and running on your own. 😄 (I have added videos instead of gifs just so you can view these without loosing any frames 😉) 
 
@@ -252,7 +250,7 @@ angleMode = AngleMode.DEGREES
 There are certain calculations that are related to vector, numbers etc which are required when you write physics system in a 2D environment. Those few methods are directly ported from p5.js. You can find some functions like `lerp`, `map`, `norm`, `constrain` etc. [here](https://javadoc.io/doc/me.nikhilchaudhari/k5-compose/latest/k5-compose/math/-calculations-kt/index.html)
 
 
-### Contributors
+## Contributors
 
 * [@elye_project](https://twitter.com/elye_project) has added awesome animations using perlin noise check them out [here](https://github.com/CuriousNikhil/k5-compose/tree/main/src/main/kotlin/examples/elye)
   * He has also written a blog post- [How to write animations under 50 lines using K5 Compose in Jetpack Compose](https://medium.com/mobile-app-development-publication/jetpack-compose-animation-under-50-lines-using-k5-compose-playground-bef35060c471)
