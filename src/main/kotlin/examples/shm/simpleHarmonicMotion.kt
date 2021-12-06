@@ -10,12 +10,10 @@ import kotlin.math.sin
 
 fun simulateSineWave() = k5 {
 
-    val angles = mutableListOf<Float>()
     val r = 6
     val total = dimensInt.width / (r * 2)
-
-    repeat(total) {
-        angles.add(map(it.toFloat(), 0f, total.toFloat(), 0f, 2 * TWO_PI.toFloat()))
+    val angles = MutableList(total) {
+        map(it.toFloat(), 0f, total.toFloat(), 0f, 2 * TWO_PI.toFloat())
     }
 
     show { drawScope ->

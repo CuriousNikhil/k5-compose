@@ -1,6 +1,7 @@
 package math
 
 import kotlin.math.absoluteValue
+import kotlin.math.floor
 
 /**
  * Generates perlin noise value in 1D for given x offset.
@@ -65,14 +66,14 @@ object Perlin {
 
     fun noise(x: Double, y: Double, z: Double): Double {
         // Find unit cube that contains point
-        val xi = Math.floor(x).toInt() and 255
-        val yi = Math.floor(y).toInt() and 255
-        val zi = Math.floor(z).toInt() and 255
+        val xi = floor(x).toInt() and 255
+        val yi = floor(y).toInt() and 255
+        val zi = floor(z).toInt() and 255
 
         // Find relative x, y, z of point in cube
-        val xx = x - Math.floor(x)
-        val yy = y - Math.floor(y)
-        val zz = z - Math.floor(z)
+        val xx = x - floor(x)
+        val yy = y - floor(y)
+        val zz = z - floor(z)
 
         // Compute fade curves for each of xx, yy, zz
         val u = fade(xx)
@@ -126,6 +127,6 @@ object Perlin {
         val u = if (h < 8) x else y
         val v = if (h < 4) y else if (h == 12 || h == 14) x else z
         return (if ((h and 1) == 0) u else -u) +
-            (if ((h and 2) == 0) v else -v)
+                (if ((h and 2) == 0) v else -v)
     }
 }

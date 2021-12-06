@@ -24,14 +24,10 @@ class GameOfLife(dimensions: Size) {
     val columns = 35
     val rows = 35
 
-    var board: MutableList<MutableList<Float>>
-    var nextGen: MutableList<MutableList<Float>>
+    var board: MutableList<MutableList<Float>> = MutableList(columns) { MutableList(rows) { 0f } }
+    var nextGen: MutableList<MutableList<Float>> = MutableList(columns) { MutableList(rows) { 0f } }
 
     init {
-
-        board = MutableList(columns) { MutableList(rows) { 0f } }
-        nextGen = MutableList(columns) { MutableList(rows) { 0f } }
-
         for (i in 0 until columns) {
             for (j in 0 until rows) {
                 // Lining the edges with 0s

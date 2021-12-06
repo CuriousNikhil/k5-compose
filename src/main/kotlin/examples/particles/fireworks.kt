@@ -71,7 +71,7 @@ data class FireWork(val dimens: Size) {
     var isExploded = false
     val particles = mutableListOf<FireWorkParticle>()
 
-    fun isDone() = isExploded && particles.size == 0
+    fun isDone() = isExploded && particles.isEmpty()
 
     fun update() {
         if (!isExploded) {
@@ -115,10 +115,7 @@ data class FireWork(val dimens: Size) {
 @ExperimentalGraphicsApi
 fun showFireWorks() = k5 {
 
-    val fireworks = mutableListOf<FireWork>()
-    repeat(10) {
-        fireworks.add(FireWork((dimensFloat)))
-    }
+    val fireworks = MutableList(10) { FireWork(dimensFloat) }
 
     show { drawScope ->
 

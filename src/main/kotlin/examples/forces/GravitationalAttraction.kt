@@ -73,14 +73,11 @@ data class Attractor(val x: Float, val y: Float, val m: Float) {
 
 fun gravitationalPull() = k5 {
 
-    val moons = mutableListOf<Moon>()
-    repeat(15) {
-        moons.add(
-            Moon(
-                k5Random(50, dimensFloat.width.toInt()),
-                k5Random(50, dimensFloat.height.toInt()),
-                Random.nextInt(30, 100).toFloat()
-            )
+    val moons = List(15) {
+        Moon(
+            k5Random(50, dimensFloat.width.toInt()),
+            k5Random(50, dimensFloat.height.toInt()),
+            Random.nextInt(30, 100).toFloat()
         )
     }
 

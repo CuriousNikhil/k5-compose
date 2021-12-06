@@ -33,8 +33,8 @@ data class Star(val dimens: Size) {
         val r = map(this.z, 0f, dimens.width, 16f, 0f)
         drawScope.drawCircle(Color.White, r, Offset(sx, sy))
 
-        var px = map(this.x / this.pz, -1f, 1f, -dimens.width, dimens.width)
-        var py = map(this.y / this.pz, -1f, 1f, -dimens.height, dimens.height)
+        val px = map(this.x / this.pz, -1f, 1f, -dimens.width, dimens.width)
+        val py = map(this.y / this.pz, -1f, 1f, -dimens.height, dimens.height)
         val stroke = map(this.pz, 0f, dimens.width, 16f, 1f)
         pz = z
         drawScope.drawLine(Color.White, Offset(px, py), Offset(sx, sy), strokeWidth = stroke)
@@ -42,10 +42,7 @@ data class Star(val dimens: Size) {
 }
 
 fun showStarField() = k5 {
-    val stars = mutableListOf<Star>()
-    repeat(600) {
-        stars.add(Star(this.size))
-    }
+    val stars = List(600) { Star(this.size) }
 
     show {
         it.translate(dimensFloat.width / 2, dimensFloat.height / 2) {
