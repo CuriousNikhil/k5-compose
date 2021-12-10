@@ -50,11 +50,7 @@ class Particle(val dimension: Size) {
 
 fun particleJs() = k5 {
 
-    val particles = mutableListOf<Particle>()
-
-    repeat(50) {
-        particles.add(Particle(dimensFloat))
-    }
+    val particles = List(50) { Particle(dimensFloat) }
 
     show { drawScope ->
         for (i in 0 until 50) {

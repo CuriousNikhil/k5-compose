@@ -16,15 +16,12 @@ import kotlin.random.Random
 fun bouncingBall() = k5 {
     val playgroundSize = dimensFloat
 
-    val balls = mutableListOf<Ball>()
-    repeat(5) {
-        balls.add(
-            Ball(
-                Random.nextInt(2, playgroundSize.width.toInt()).toFloat(),
-                6f,
-                Random.nextInt(8, 50).toFloat(),
-                playgroundSize
-            )
+    val balls = List(5) {
+        Ball(
+            Random.nextInt(2, playgroundSize.width.toInt()).toFloat(),
+            6f,
+            Random.nextInt(8, 50).toFloat(),
+            playgroundSize
         )
     }
 

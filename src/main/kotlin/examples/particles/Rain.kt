@@ -12,13 +12,9 @@ import kotlin.random.Random
 
 fun showRain() = k5 {
 
-    val r = mutableListOf<Float>()
     val N = 200
     var t = 0f
-
-    repeat(N) {
-        r.add(Random.nextFloat())
-    }
+    val r = List(N) { Random.nextFloat() }
 
     show(modifier = Modifier.background(Color(0xFFE8FFFF))) {
 

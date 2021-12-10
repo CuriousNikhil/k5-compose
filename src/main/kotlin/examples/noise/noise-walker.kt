@@ -1,6 +1,5 @@
 package examples.noise
 
-import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.PointMode
 import androidx.compose.ui.graphics.drawscope.DrawScope
@@ -25,12 +24,8 @@ data class Particle(val dimens: IntSize) {
     val velocity = Vector2D(0f, 0f)
     val acceleration = Vector2D(0f, 0f)
     val maxSpeed = 4f
-    val points = mutableListOf<Offset>()
     var skipPoint = false
-
-    init {
-        points.add(position.toOffSet())
-    }
+    val points = mutableListOf(position.toOffSet())
 
     fun update() {
         velocity += acceleration

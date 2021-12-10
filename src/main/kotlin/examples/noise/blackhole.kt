@@ -17,7 +17,7 @@ fun showBlackHole() = k5 {
     noLoop()
     angleMode = AngleMode.DEGREES
 
-    var circleNumbers = 200
+    val circleNumbers = 200
     val circleGap = 0.01f
     var i = 0
     show {

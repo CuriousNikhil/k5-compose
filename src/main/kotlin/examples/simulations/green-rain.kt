@@ -142,13 +142,12 @@ data class SymbolEmitter(val dimens: Size, val emitterX: Float) {
 
 fun showMatrixGreenRain() = k5 {
 
-    val symbolEmitterList = mutableListOf<SymbolEmitter>()
     var positionx = 0f
-    repeat(25) {
+    val symbolEmitterList = List(25) {
         if (positionx < dimensFloat.width) {
             positionx += (20f..60f).random()
         }
-        symbolEmitterList.add(SymbolEmitter(dimensFloat, positionx))
+        SymbolEmitter(dimensFloat, positionx)
     }
 
     show { drawScope ->

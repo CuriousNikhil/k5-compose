@@ -1,3 +1,5 @@
+package examples.vectors
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.ui.Modifier
@@ -5,6 +7,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.PointMode
 import androidx.compose.ui.graphics.StrokeCap
+import k5
 import math.Vector2D
 import math.multiply
 import math.plusAssign
@@ -26,24 +29,15 @@ fun simpleRandomWalk() = k5 {
 
     var x = 400f
     var y = 400f
-    val points = mutableListOf<Offset>()
-    points.add(Offset(x, y))
+    val points = mutableListOf(Offset(x, y))
 
     show(modifier = Modifier.fillMaxSize().background(Color.Black)) { drawScope ->
         val r = Random.nextInt(0, 5)
         when (r) {
-            0 -> {
-                x += 5
-            }
-            1 -> {
-                x -= 5
-            }
-            2 -> {
-                y += 5
-            }
-            4 -> {
-                y -= 5
-            }
+            0 -> x += 5
+            1 -> x -= 5
+            2 -> y += 5
+            4 -> y -= 5
         }
 
         points.add(Offset(x, y))
@@ -60,11 +54,10 @@ fun simpleRandomWalk() = k5 {
  */
 fun levyFlightWalker() = k5 {
 
-    val points = mutableListOf<Offset>()
     // create a position vector
     val position = Vector2D(400f, 400f)
     // add position vector to points
-    points.add(position.toOffSet())
+    val points = mutableListOf(position.toOffSet())
 
     show { scope ->
         // create a random vector
