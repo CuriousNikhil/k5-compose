@@ -1,5 +1,10 @@
 package examples.simulations
 
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.material.Slider
+import androidx.compose.material.Text
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
@@ -19,21 +24,29 @@ data class Rectangles(
 
 fun showRotatingSquares() = k5 {
 
-    val n = 35
     val rectList = mutableListOf<Rectangles>()
+    val n = mutableStateOf(35f)
+    val rectSize = mutableStateOf(15.dp)
     var angle = 0f
 
-    val rectSize = 15.dp
     val colorList = listOf(
         Color(0xffffeaa7),
         Color(0xfffab1a0),
         Color(0xffa29bfe),
     )
 
-    show {
+    showWithControls(controls = {
+        Text("Number of squares")
+        Slider(
+            value = n.value,
+            valueRange = 10f..40f,
+            onValueChange = { n.value = it },
+            modifier = Modifier.fillMaxWidth()
+        )
+    }) {
 
-        for (i in 0..n) {
-            val s = rectSize * i
+        for (i in 0..n.value.toInt()) {
+            val s = rectSize.value * i
             val offsetX = -s / 2
             val offsetY = -s / 2
             val rect = Rectangles(s, offsetX, offsetY, colorList[i % colorList.size])
@@ -41,8 +54,8 @@ fun showRotatingSquares() = k5 {
         }
 
         it.translate(dimensFloat.width / 2, dimensFloat.height / 2) {
-            for (i in n downTo 0) {
-                this.rotate(angle * (n - i + 1) * 0.07f, Offset(0f, 0f)) {
+            for (i in n.value.toInt() downTo 0) {
+                this.rotate(angle * (n.value.toInt() - i + 1) * 0.07f, Offset(0f, 0f)) {
                     drawRect(
                         brush = SolidColor(rectList[i].color),
                         Offset(rectList[i].offsetX.toPx(), rectList[i].offsetY.toPx()),

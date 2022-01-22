@@ -1,14 +1,14 @@
-
-import androidx.compose.animation.core.withInfiniteAnimationFrameMillis
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.DrawScope
@@ -19,6 +19,7 @@ import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
 import androidx.compose.ui.window.rememberWindowState
+import ui.SketchView
 
 /**
  * Builder construct for the K5-compose.
@@ -121,8 +122,30 @@ class K5(
      * @param modifier Jetpack compose [Modifier]
      * @param sketch drawScope - Compose canvas drawscope
      */
-    fun show(modifier: Modifier = Modifier.fillMaxSize(), sketch: (drawScope: DrawScope) -> Unit) {
+    fun show(
+        modifier: Modifier = Modifier.fillMaxSize(),
+        sketch: (drawScope: DrawScope) -> Unit
+    ) {
         render(modifier, sketch)
+    }
+
+    /**
+     * Shows canvas window as well as controls view side by side.
+     * Internally, this starts the Jetpack Compose Window and renders the [sketch] requested by user into the Jetpack Compose
+     * [Canvas] Composable. The size of the [Canvas] will be same as the [size] passed in [k5] method by default.
+     * One can change the canvas size and window size with the help of modifiers.
+     * In order to keep the animation running (rendering canvas continuously), it requests to run the frame of animation in nanos.
+     *
+     * Also, you can add your controls like sliders, checkboxes, radio-buttons, pickers etc as a control to change/provide
+     * inputs to your sketch. This is just simple [Composable] function, so you can add all the [Composable] elements you want.
+     * The controls are shown on the right side in the window. You can use Compose States to store/change your input and use it in your sketch.
+     */
+    fun showWithControls(
+        modifier: Modifier = Modifier.background(Color.Transparent),
+        controls: (@Composable () -> Unit)? = null,
+        sketch: (drawScope: DrawScope) -> Unit
+    ) {
+        render(modifier, sketch, controls)
     }
 
     /**
@@ -132,11 +155,18 @@ class K5(
      * @param modifier - Jetpack compose [Modifier]. Will be applied to the [Canvas]
      * @param sketch - The content to be drawn on to [Canvas]
      */
-    private fun render(modifier: Modifier, sketch: (drawScope: DrawScope) -> Unit) = application {
+    private fun render(
+        modifier: Modifier,
+        sketch: (drawScope: DrawScope) -> Unit,
+        controls: (@Composable () -> Unit)? = null
+    ) = application {
+        val areControlsActive = controls != null
+
         val (width, height) = with(LocalDensity.current) { Pair(size.width.toDp(), size.height.toDp()) }
+        val calculatedWidth = if (areControlsActive) width + width * 2 / 3 else width
         Window(
             onCloseRequest = ::exitApplication,
-            state = rememberWindowState(width = width, height = height),
+            state = rememberWindowState(width = calculatedWidth, height = height),
             title = title,
             icon = icon,
             undecorated = undecorated,
@@ -147,34 +177,19 @@ class K5(
             onPreviewKeyEvent = onPreviewKeyEvent,
             onKeyEvent = onKeyEvent
         ) {
-
-            // dt = change in time
-            val dt = remember { mutableStateOf(0f) }
-            // TODO : Show elapsed time and frames per second on toolbar of window
-            var startTime = remember { mutableStateOf(0L) }
-            val previousTime = remember { mutableStateOf(System.nanoTime()) }
-            Canvas(modifier = Modifier.fillMaxSize().background(Color.Black).then(modifier)) {
-                val stepFrame = dt.value
-                sketch(this)
-            }
-            if (!stopLoop) {
-                requestAnimationFrame(dt, previousTime)
-            }
-        }
-    }
-
-    /**
-     * Run frame time with nanoseconds
-     * @param dt - Change it time
-     * @param previousTime - previous time to calculate change in time
-     */
-    @Composable
-    private fun requestAnimationFrame(dt: MutableState<Float>, previousTime: MutableState<Long>) {
-        LaunchedEffect(Unit) {
-            while (true) {
-                withInfiniteAnimationFrameMillis {
-                    dt.value = ((it - previousTime.value) / 1E7).toFloat()
-                    previousTime.value = it
+            Row(modifier = Modifier.fillMaxSize()) {
+                Box(
+                    modifier = Modifier
+                        .width(width)
+                        .height(height)
+                        .clipToBounds()
+                ) {
+                    SketchView(modifier, stopLoop, sketch)
+                }
+                Box(modifier = Modifier.height(height).background(Color.LightGray)) {
+                    Column {
+                        controls?.let { it() }
+                    }
                 }
             }
         }
