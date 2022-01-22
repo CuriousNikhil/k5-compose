@@ -167,7 +167,7 @@ showWithControls(controls = {
 ```
 Few examples [here](https://github.com/CuriousNikhil/k5-compose/blob/main/src/main/kotlin/examples/simulations/rotatingsquares.kt) and here. Which looks something like this - 
 
-<img width="450" height= "300" alt="image" src="https://user-images.githubusercontent.com/16976114/150637565-a6c3a559-08d2-4eff-8151-6a43b5b5c195.png">
+<img width="832" alt="image" src="https://user-images.githubusercontent.com/16976114/150637565-a6c3a559-08d2-4eff-8151-6a43b5b5c195.png">
 
 This adds 2/3rd of your specified `width` to the k5 compose playground window.
 
