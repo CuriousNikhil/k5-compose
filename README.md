@@ -168,7 +168,7 @@ showWithControls(controls = {
 Few examples [here](https://github.com/CuriousNikhil/k5-compose/blob/main/src/main/kotlin/examples/simulations/rotatingsquares.kt) and here. 
 
 
-### Few handy Apis
+## Few handy Apis
 
 **noLoop**
 
