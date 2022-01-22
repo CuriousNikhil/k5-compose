@@ -165,11 +165,7 @@ showWithControls(controls = {
       // Draw your sketch.
   }
 ```
-Few examples [here](https://github.com/CuriousNikhil/k5-compose/blob/main/src/main/kotlin/examples/simulations/rotatingsquares.kt) and [here](https://github.com/CuriousNikhil/k5-compose/blob/main/src/main/kotlin/examples/particles/particles-js-simulation.kt). Which looks something like this - 
-
-
-<video src="https://user-images.githubusercontent.com/16976114/150638237-d64c0a2f-9bdc-4e14-b71b-56b3aff357f6.mov" />
-
+Few examples [here](https://github.com/CuriousNikhil/k5-compose/blob/main/src/main/kotlin/examples/simulations/rotatingsquares.kt) and [here](https://github.com/CuriousNikhil/k5-compose/blob/main/src/main/kotlin/examples/particles/particles-js-simulation.kt). Which looks something like this - [video](https://user-images.githubusercontent.com/16976114/150638237-d64c0a2f-9bdc-4e14-b71b-56b3aff357f6.mov)
 
 
 This adds 2/3rd of your specified `width` to the k5 compose playground window.
