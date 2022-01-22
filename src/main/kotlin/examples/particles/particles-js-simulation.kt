@@ -1,34 +1,43 @@
 package examples.particles
 
+import androidx.compose.material.Slider
+import androidx.compose.material.Text
+import androidx.compose.runtime.State
+import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import k5
 import math.Vector2D
 import math.distance
+import math.divide
+import math.multiply
 import math.plusAssign
+import math.random
 import math.toOffSet
-import kotlin.random.Random
+import kotlin.math.abs
 
-class Particle(val dimension: Size) {
+class Particle(val dimension: Size, val velocityFactor: State<Float>, val distance: State<Float>) {
 
     val position = Vector2D(
-        Random.nextInt(dimension.width.toInt()).toFloat(),
-        Random.nextInt(dimension.height.toInt()).toFloat()
+        (0f..dimension.width).random(),
+        (0f..dimension.height).random()
     )
 
-    var r = Random.nextInt(1, 8)
+    var r = (1f..8f).random()
 
     var velocity = Vector2D(
-        Random.nextDouble(-2.0, 2.0).toFloat(),
-        Random.nextDouble(-1.0, 1.5).toFloat()
+        (-2.0f..2.0f).random(),
+        (-1.0f..1.5f).random()
     )
 
     fun createParticle(drawScope: DrawScope) {
-        drawScope.drawCircle(Color.White, r.toFloat(), position.toOffSet())
+        drawScope.drawCircle(Color.White, r, position.toOffSet())
     }
 
     fun moveParticle() {
+        velocity.multiply(velocityFactor.value)
         if (position.x < 0f || position.x > dimension.width) {
             velocity.x *= -1
         }
@@ -36,12 +45,13 @@ class Particle(val dimension: Size) {
             velocity.y *= -1
         }
         position += velocity
+        velocity.divide(velocityFactor.value)
     }
 
     fun joinParticles(drawScope: DrawScope, particles: List<Particle>) {
         particles.forEach {
             val dist = this.position.distance(it.position)
-            if (dist < 100f) {
+            if (dist < distance.value) {
                 drawScope.drawLine(Color.Cyan, this.position.toOffSet(), it.position.toOffSet(), alpha = 0.5f)
             }
         }
@@ -50,14 +60,49 @@ class Particle(val dimension: Size) {
 
 fun particleJs() = k5 {
 
-    val particles = List(50) { Particle(dimensFloat) }
+    var numberOfParticles = mutableStateOf(50)
+    val velocityFactor = mutableStateOf(1f)
+    val distance = mutableStateOf(100f)
+    val particles = mutableStateListOf<Particle>()
+    repeat(numberOfParticles.value) {
+        particles.add(Particle(dimensFloat, velocityFactor, distance))
+    }
 
-    show { drawScope ->
-        for (i in 0 until 50) {
-            val it = particles[i]
-            it.createParticle(drawScope)
-            it.moveParticle()
-            it.joinParticles(drawScope, particles.slice(0 until i))
+    showWithControls(controls = {
+        Text("Number of particles")
+        Slider(
+            value = numberOfParticles.value.toFloat(),
+            onValueChange = { numberOfParticles.value = it.toInt() },
+            valueRange = 50f..200f,
+            onValueChangeFinished = {
+                if (numberOfParticles.value < particles.size) {
+                    repeat(particles.size - numberOfParticles.value) {
+                        particles.removeLast()
+                    }
+                } else {
+                    repeat(abs(numberOfParticles.value - particles.size)) {
+                        particles.add(Particle(dimensFloat, velocityFactor, distance))
+                    }
+                }
+            }
+        )
+        Text("Velocity")
+        Slider(
+            value = velocityFactor.value,
+            onValueChange = { velocityFactor.value = it },
+            valueRange = 1f..5f
+        )
+        Text("Lines")
+        Slider(
+            value = distance.value,
+            onValueChange = { distance.value = it },
+            valueRange = 50f..200f
+        )
+    }) { drawScope ->
+        particles.forEachIndexed { index, particle ->
+            particle.createParticle(drawScope)
+            particle.moveParticle()
+            particle.joinParticles(drawScope, particles.slice(0 until index))
         }
     }
 }

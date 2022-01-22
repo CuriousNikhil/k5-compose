@@ -1,8 +1,7 @@
 
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.graphics.ExperimentalGraphicsApi
-import examples.elye.danceYarnAuto
-import examples.elye.landscapeInspection
+import examples.particles.particleJs
 
 @ExperimentalGraphicsApi
 @ExperimentalComposeUiApi
@@ -18,7 +17,7 @@ fun main() {
 
     // gameOfLife()
     // chainLoop()
-    // particleJs()
+    particleJs()
     // parametricEquation()
     // simplexNoise()
     // simulateSineWave()
@@ -53,5 +52,5 @@ fun main() {
     // classicyarnanimated()
     // danceYarnMouse()
     // danceYarnAuto()
-    landscapeInspection()
+    // landscapeInspection()
 }
