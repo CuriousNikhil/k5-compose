@@ -127,6 +127,6 @@ object Perlin {
         val u = if (h < 8) x else y
         val v = if (h < 4) y else if (h == 12 || h == 14) x else z
         return (if ((h and 1) == 0) u else -u) +
-                (if ((h and 2) == 0) v else -v)
+            (if ((h and 2) == 0) v else -v)
     }
 }
