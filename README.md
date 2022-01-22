@@ -142,6 +142,31 @@ You can apply all the compose `Modifiers` to the playground like changing backgr
     }
 ```
 
+### showWithControls
+
+If you want to add some interactivity with controls for your sketch, you can use `showWithControls(){..}`. You can add readily available Jetpack Compose elements like Slider, Checkbox, Toggle, Button, etc. And use `State` to change, update, take the inputs to your k5 sketch.
+
+```kotlin
+
+fun main() = k5 {
+
+val numbers = mutableStateOf(0.3f)
+
+// Here Slider is pure Jetpack Compose element
+showWithControls(controls = {
+      Text("Number of squares")
+      Slider(
+          value = numbers.value,
+          onValueChange = { numbers.value = it }
+      )
+  }){ drawScope ->
+
+      // Use the numbers value here
+      // Draw your sketch.
+  }
+```
+Few examples [here](https://github.com/CuriousNikhil/k5-compose/blob/main/src/main/kotlin/examples/simulations/rotatingsquares.kt) and here. 
+
 
 ### Few handy Apis
 
