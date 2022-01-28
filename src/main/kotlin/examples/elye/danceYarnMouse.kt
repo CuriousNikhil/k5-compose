@@ -1,5 +1,6 @@
 package examples.elye
 
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
@@ -9,6 +10,7 @@ import k5
 import math.Vector2D
 import math.noise3D
 
+@OptIn(ExperimentalComposeUiApi::class)
 fun danceYarnMouse() = k5 {
     val mouseVector = Vector2D()
     show(

@@ -1,5 +1,6 @@
 package examples.elye
 
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerMoveFilter
@@ -14,6 +15,7 @@ import math.toOffSet
 
 private const val BALL_RADIUS = 30f
 
+@OptIn(ExperimentalComposeUiApi::class)
 fun simpleGame() = k5 {
     var velocity = 5f
     val vehicleY = dimensFloat.height - 250f

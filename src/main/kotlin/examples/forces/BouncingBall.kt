@@ -2,25 +2,43 @@ package examples.forces
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.combinedClickable
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.Checkbox
+import androidx.compose.material.Slider
+import androidx.compose.material.Text
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.DrawScope
+import androidx.compose.ui.unit.dp
 import k5
 import math.Vector2D
 import math.multiply
-import kotlin.random.Random
+import math.random
 
 @OptIn(ExperimentalFoundationApi::class)
 fun bouncingBall() = k5 {
+
+    var enableWaterDrag by mutableStateOf(false)
+    var enableFriction by mutableStateOf(false)
+    var gravity by mutableStateOf(0.2f)
+    var ballMassFactor by mutableStateOf(1f)
+    var coeffOfDrag by mutableStateOf(0.3f)
+
     val playgroundSize = dimensFloat
 
     val balls = List(5) {
         Ball(
-            Random.nextInt(2, playgroundSize.width.toInt()).toFloat(),
+            (2f..dimensFloat.width).random(),
             6f,
-            Random.nextInt(8, 50).toFloat(),
+            m = (8f..50f).random(),
+            ballMassFactor = ballMassFactor,
+            coeffOfDrag = coeffOfDrag,
             playgroundSize
         )
     }
@@ -39,8 +57,8 @@ fun bouncingBall() = k5 {
         )
     }
 
-    show(
-        Modifier.combinedClickable(
+    showWithControls(
+        modifier = Modifier.combinedClickable(
             onClick = {
                 /**
                  * On mouse click, apply wind force in right direction
@@ -48,30 +66,53 @@ fun bouncingBall() = k5 {
                 val wind = Vector2D(50f, 0f)
                 balls.forEach { it.applyForce(wind) }
             }
-        )
+        ),
+        controls = {
+            Row(modifier = Modifier.padding(4.dp)) {
+                Checkbox(checked = enableWaterDrag, onCheckedChange = { enableWaterDrag = it })
+                Text("Enable water drag")
+            }
+            Row(modifier = Modifier.padding(4.dp)) {
+                Checkbox(checked = enableFriction, onCheckedChange = { enableFriction = it })
+                Text("Enable friction force")
+            }
+
+            Text(modifier = Modifier.padding(top = 4.dp), text = "Gravity")
+            Slider(value = gravity, onValueChange = { gravity = it })
+
+            Text(text = "Coefficient of Drag")
+            Slider(value = coeffOfDrag, onValueChange = { coeffOfDrag = it })
+
+            Text(text = "Ball's mass")
+            Slider(value = ballMassFactor, onValueChange = { ballMassFactor = it })
+        }
     ) { scope ->
-
         // Apply gravity force every time on ball
-        val gravity = Vector2D(0f, 0.2f)
+        val gravityVector = Vector2D(0f, gravity)
 
-        /* Uncomment to apply drag force
+        /*
          * This will create some sort of water and air medium. When ball will hit the water
          * it'll experience drag force
          */
-        // showWater(scope)
+        if (enableWaterDrag) {
+            showWater(scope)
+        }
 
         balls.forEach { ball ->
-            val weight = gravity.multiply(ball.mass)
+            val weight = gravityVector.multiply(ball.mass)
             ball.applyForce(weight)
 
-            /* Uncomment to apply friction force*/
-            // ball.friction()
+            if (enableFriction) {
+                ball.friction()
+            }
 
-            /* Uncomment to apply drag force
+            /*
              * This will create some sort of water and air medium. When ball will hit the water
              * it'll experience drag force
              */
-            // showDrag(ball)
+            if (enableWaterDrag) {
+                showDrag(ball)
+            }
 
             ball.update()
             ball.edges()

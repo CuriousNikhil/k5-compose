@@ -20,6 +20,8 @@ data class Ball(
     var x: Float,
     var y: Float,
     var m: Float,
+    var ballMassFactor: Float,
+    var coeffOfDrag: Float,
     var playgroundSize: Size
 ) {
 
@@ -33,7 +35,7 @@ data class Ball(
     val velocity = Vector2D(0f, 0f)
     val acceleration = Vector2D(0f, 0f)
 
-    val mass = m
+    val mass = m * ballMassFactor
 
     // Create the radius of the object based on the mass. The more the mass, the more the size of the ball
     val radius = sqrt(mass) * 10
@@ -103,7 +105,7 @@ data class Ball(
         drag.multiply(-1f)
 
         // Coefficient of drag - depends on medium
-        val coefficientOfDrag = 0.3f
+        val coefficientOfDrag = coeffOfDrag
 
         // magSq() returns magnitude square
         val speedSq = velocity.magSq()

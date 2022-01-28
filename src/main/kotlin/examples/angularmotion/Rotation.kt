@@ -1,5 +1,6 @@
 package examples.angularmotion
 
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
@@ -13,6 +14,7 @@ import math.constrain
 import math.map
 import math.toOffSet
 
+@OptIn(ExperimentalComposeUiApi::class)
 fun rotateRectangle() = k5 {
 
     var angle = 0f

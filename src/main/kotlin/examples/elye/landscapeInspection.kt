@@ -1,5 +1,6 @@
 package examples.elye
 
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
@@ -9,6 +10,7 @@ import k5
 import math.Vector2D
 import math.noise2D
 
+@OptIn(ExperimentalComposeUiApi::class)
 fun landscapeInspection() {
     val loop = 1000
     val slices = 250

@@ -1,6 +1,7 @@
 package examples.mathematics
 
 import androidx.compose.foundation.background
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
@@ -10,6 +11,7 @@ import math.map
 import kotlin.math.cos
 import kotlin.math.sin
 
+@OptIn(ExperimentalComposeUiApi::class)
 fun showRibbon() = k5 {
 
     var r = 50f

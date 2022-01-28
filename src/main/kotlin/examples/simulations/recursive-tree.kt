@@ -1,6 +1,7 @@
 package examples.simulations
 
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
@@ -15,6 +16,7 @@ import k5
  * Inspired from https://github.com/V9vek/Fractal-Trees
  */
 // Implementation logic may differ
+@OptIn(ExperimentalComposeUiApi::class)
 fun showRecursiveTree() = k5 {
 
     noLoop()

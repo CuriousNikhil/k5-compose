@@ -1,5 +1,6 @@
 package examples.kinematics
 
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
@@ -66,6 +67,7 @@ data class Mover(
     }
 }
 
+@OptIn(ExperimentalComposeUiApi::class)
 fun simpleMover() = k5 {
 
     // Create a mover object with initial position

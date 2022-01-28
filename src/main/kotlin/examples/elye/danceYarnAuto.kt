@@ -1,5 +1,6 @@
 package examples.elye
 
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
@@ -13,6 +14,7 @@ import java.lang.Float.max
 import java.lang.Float.min
 import kotlin.math.abs
 
+@OptIn(ExperimentalComposeUiApi::class)
 fun danceYarnAuto() = k5 {
     val loop = 10000
     val mouseVector = Vector2D()

@@ -1,5 +1,6 @@
 package examples.forces
 
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.DrawScope
@@ -71,6 +72,7 @@ data class Attractor(val x: Float, val y: Float, val m: Float) {
     }
 }
 
+@OptIn(ExperimentalComposeUiApi::class)
 fun gravitationalPull() = k5 {
 
     val moons = List(15) {

@@ -1,5 +1,6 @@
 package examples.simulations
 
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
@@ -43,6 +44,7 @@ class Spring(
     }
 }
 
+@OptIn(ExperimentalComposeUiApi::class)
 fun chainLoop() = k5 {
     val dimens = dimensFloat
     val l1 = Spring(0f, dimens.width / 2)

@@ -1,5 +1,6 @@
 package examples.simulations
 
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
@@ -9,6 +10,7 @@ import androidx.compose.ui.input.pointer.pointerMoveFilter
 import k5
 import math.map
 
+@OptIn(ExperimentalComposeUiApi::class)
 fun showWaveMaker() = k5 {
 
     var angle = 0f
