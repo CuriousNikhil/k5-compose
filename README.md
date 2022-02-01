@@ -2,7 +2,7 @@
 
 **k5-compose** is a sketchy port of [P5.js](https://p5js.org/) for Jetpack Compose Desktop.
 
-[![](https://img.shields.io/badge/mavencentral-v1.0.1-yellowgreen?style=flat-square&logo=gradle)](https://github.com/CuriousNikhil/k5-compose/releases/tag/v1.0.1) [![aweseome kotlin](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+[![](https://img.shields.io/badge/mavencentral-v1.0.1-yellowgreen?style=flat-square&logo=gradle)](https://github.com/CuriousNikhil/k5-compose/releases/tag/v1.0.1) [![aweseome kotlin](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/KotlinBy/awesome-kotlin)
 
 
 This library provides you a playground to play with your sketches so you don't have to worry about maintaining/remembering states and setting up the animations etc.
