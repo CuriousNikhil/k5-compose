@@ -1,7 +1,7 @@
 
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.graphics.ExperimentalGraphicsApi
-import examples.particles.particleJs
+import examples.art.showPietMondrian
 
 @ExperimentalGraphicsApi
 @ExperimentalComposeUiApi
@@ -17,7 +17,7 @@ fun main() {
 
     // gameOfLife()
     // chainLoop()
-    particleJs()
+    // particleJs()
     // parametricEquation()
     // simplexNoise()
     // simulateSineWave()
@@ -53,4 +53,5 @@ fun main() {
     // danceYarnMouse()
     // danceYarnAuto()
     // landscapeInspection()
+    showPietMondrian()
 }
