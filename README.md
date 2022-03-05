@@ -45,7 +45,8 @@ All the examples can be found [here](https://github.com/CuriousNikhil/k5-compose
 | ![image](https://user-images.githubusercontent.com/16976114/140385172-de1f86c5-0e99-4ef7-81ac-0fd6777e99d0.png) | ![image](https://user-images.githubusercontent.com/16976114/140390189-7ab55cb2-1b9b-479c-a47f-77862a34d1db.png) | ![image](https://user-images.githubusercontent.com/16976114/144698909-2b8a6c46-55f1-4e83-ab15-08f1a5ac8618.png) |
 | Perlin noise1d (by [@elye_project](https://twitter.com/elye_project)) | Perlin noise2d (by [@elye_project](https://twitter.com/elye_project)) | Ribbon |
 | ![image](https://user-images.githubusercontent.com/16976114/144699041-fcfd3bad-bbae-4b16-819a-16edb5911eba.png) | ![image](https://user-images.githubusercontent.com/16976114/144699111-08e3157c-2f46-43bf-946c-9ff240a3d169.png) | ![image](https://user-images.githubusercontent.com/16976114/145774858-b1d81999-ef24-45d8-88c8-efc6fe6831a2.png) |
-
+| Circle Packing | | |
+| <img width="506" alt="Screenshot 2022-03-05 at 11 55 13 PM" src="https://user-images.githubusercontent.com/16976114/156895784-42cdb451-1ce7-4d00-910e-4d9934f3b328.png"> | | |
 
 
 
