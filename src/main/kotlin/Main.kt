@@ -1,7 +1,7 @@
 
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.graphics.ExperimentalGraphicsApi
-import examples.art.showPietMondrian
+import examples.art.showTriangularMesh
 
 @ExperimentalGraphicsApi
 @ExperimentalComposeUiApi
@@ -53,5 +53,8 @@ fun main() {
     // danceYarnMouse()
     // danceYarnAuto()
     // landscapeInspection()
-    showPietMondrian()
+    // showPietMondrian()
+    // hypnoticSquares()
+    // showCirclePacking()
+    showTriangularMesh()
 }

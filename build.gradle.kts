@@ -19,7 +19,7 @@ repositories {
 }
 
 dependencies {
-    implementation(compose.desktop.currentOs)
+    implementation(compose.desktop.macos_arm64)
     implementation(project("k5-compose"))
     // implementation("me.nikhilchaudhari:k5-compose:1.0.0-alpha01")
     dokkaHtmlPlugin("org.jetbrains.dokka:kotlin-as-java-plugin:1.5.30")
